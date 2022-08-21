@@ -37,6 +37,10 @@ class AuthHelper {
     }
   }
 
+  SignOut() async {
+    await FirebaseAuth.instance.signOut();
+  }
+
   User? getUser() {
     return FirebaseAuth.instance.currentUser;
   }

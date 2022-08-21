@@ -6,6 +6,7 @@ import 'package:gif_app/Model/AppUser.dart';
 import 'package:gif_app/Providers/FireStoreProvider.dart';
 import 'package:gif_app/Providers/UIProvider.dart';
 import 'package:gif_app/Screens/Homepage.dart';
+import 'package:gif_app/Screens/SignupSigninScreen.dart';
 import 'package:provider/provider.dart';
 
 class AuthProvider extends ChangeNotifier {
@@ -39,6 +40,11 @@ class AuthProvider extends ChangeNotifier {
     userNameSignUpController.clear();
     Provider.of<UIProvider>(AppRouter.navKey.currentContext!, listen: false)
         .changeSigInUpPage(0);
+  }
+
+  SignOut() async {
+    await AuthHelper.instance.SignOut();
+    AppRouter.pushWithReplacment(SignupSigninScreen());
   }
 
   User? getCurrentUser() {

@@ -4,6 +4,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gif_app/Providers/AuthProvider.dart';
+import 'package:gif_app/Screens/ResetPasswordDialog.dart';
 import 'package:provider/provider.dart';
 
 class SignInForm extends StatelessWidget {
@@ -64,7 +65,12 @@ class SignInForm extends StatelessWidget {
               ),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text('Forgot your password?'),
-                TextButton(onPressed: () => null, child: Text("Reset here"))
+                TextButton(
+                    onPressed: () => showDialog(
+                        context: context,
+                        builder: (context) =>
+                            SizedBox(child: ResetPasswordDialog())),
+                    child: Text("Reset here"))
               ])
             ],
           )),
