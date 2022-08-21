@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:gif_app/AppRouter/AppRouter.dart';
 import 'package:gif_app/Helpers/AuthHelper.dart';
+import 'package:gif_app/Helpers/DioHelper.dart';
 import 'package:gif_app/Model/AppUser.dart';
 import 'package:gif_app/Providers/FireStoreProvider.dart';
 import 'package:gif_app/Providers/UIProvider.dart';
@@ -12,6 +13,7 @@ import 'package:provider/provider.dart';
 class AuthProvider extends ChangeNotifier {
   TextEditingController emailSignInController = TextEditingController();
   TextEditingController passwordSignInController = TextEditingController();
+  TextEditingController resetPasswordContoller = TextEditingController();
 
   TextEditingController emailSignUpController = TextEditingController();
   TextEditingController passwordSignUpController = TextEditingController();
@@ -45,6 +47,12 @@ class AuthProvider extends ChangeNotifier {
   SignOut() async {
     await AuthHelper.instance.SignOut();
     AppRouter.pushWithReplacment(SignupSigninScreen());
+  }
+
+  ResetPassword() async {
+    await AuthHelper.instance.ResetPassword(resetPasswordContoller.text);
+    resetPasswordContoller.clear();
+    AppRouter.popWidget();
   }
 
   User? getCurrentUser() {

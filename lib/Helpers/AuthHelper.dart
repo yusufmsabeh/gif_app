@@ -41,6 +41,10 @@ class AuthHelper {
     await FirebaseAuth.instance.signOut();
   }
 
+  ResetPassword(String email) async {
+    await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+  }
+
   User? getUser() {
     return FirebaseAuth.instance.currentUser;
   }

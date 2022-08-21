@@ -69,7 +69,7 @@ class SignInForm extends StatelessWidget {
                     onPressed: () => showDialog(
                         context: context,
                         builder: (context) =>
-                            SizedBox(child: ResetPasswordDialog())),
+                            ResetPasswordDialog()),
                     child: Text("Reset here"))
               ])
             ],

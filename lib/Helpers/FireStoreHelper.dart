@@ -11,10 +11,6 @@ class FireStoreHelper {
         .collection(AppUserFileds.collectionName)
         .doc(appUser.id)
         .set(appUser.toJson());
-    await FirebaseFirestore.instance
-        .collection(AppUserFileds.collectionName)
-        .doc(appUser.id)
-        .collection('Fovorites');
   }
 
   getUser(String id) async {
