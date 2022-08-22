@@ -27,7 +27,6 @@ class FireStoreHelper {
   }
 
   updateUser(AppUser appUser) async {
-    log(appUser.id ?? 'no id');
     await FirebaseFirestore.instance
         .collection(AppUserFileds.collectionName)
         .doc(appUser.id)

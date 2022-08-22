@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gif_app/Providers/AuthProvider.dart';
 import 'package:provider/provider.dart';
@@ -55,7 +53,7 @@ class ResetPasswordDialog extends StatelessWidget {
                           child: TextFormField(
                             controller: provider.resetPasswordContoller,
                             decoration:
-                                InputDecoration(border: InputBorder.none),
+                                const InputDecoration(border: InputBorder.none),
                           ))),
                 ],
               ),
@@ -71,7 +69,7 @@ class ResetPasswordDialog extends StatelessWidget {
                     onPressed: () => provider.ResetPassword(),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         Text("Send email"),
                         Spacer(),
                         Icon(Icons.send_outlined)

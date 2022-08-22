@@ -36,7 +36,6 @@ class UIProvider extends ChangeNotifier {
     User? user = Provider.of<AuthProvider>(context).getCurrentUser();
 
     if (user == null) {
-      log("user is null");
       return SignupSigninScreen();
     } else
       return HomePage();

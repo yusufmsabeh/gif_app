@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gif_app/AppRouter/AppRouter.dart';
 import 'package:gif_app/Providers/AuthProvider.dart';
@@ -45,19 +43,28 @@ class DrawerScreen extends StatelessWidget {
               ),
             )
           ]),
+          const Divider(
+            color: Colors.white,
+          ),
           ListTile(
             onTap: () {
               FireStoreprovider.fillFavoritesGif();
-              AppRouter.pushWidget(FavoritesScreen());
+              AppRouter.pushWidget(const FavoritesScreen());
             },
-            leading: Icon(
+            leading: const Icon(
               Icons.favorite,
               size: 24,
               color: Colors.white,
             ),
-            title: Text('Favorites'),
+            title: Text(
+              'Favorites',
+              style: TextStyle(
+                  fontFamily: "Rubik",
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13.sp),
+            ),
           ),
-          Divider(
+          const Divider(
             color: Colors.white,
           ),
           ListTile(
@@ -65,72 +72,108 @@ class DrawerScreen extends StatelessWidget {
               Dioproivder.getCategoryList('Dogs');
               AppRouter.pushWidget(CategoryScreen(Title: 'Dogs'));
             },
-            leading: Icon(
+            leading: const Icon(
               Icons.label_important_outline,
               size: 24,
               color: Colors.white,
             ),
-            title: Text('Dogs'),
+            title: Text(
+              'Dogs',
+              style: TextStyle(
+                  fontFamily: "Rubik",
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13.sp),
+            ),
           ),
           ListTile(
             onTap: () {
               Dioproivder.getCategoryList('Cats');
               AppRouter.pushWidget(CategoryScreen(Title: 'Cats'));
             },
-            leading: Icon(
+            leading: const Icon(
               Icons.label_important_outline,
               size: 24,
               color: Colors.white,
             ),
-            title: Text('Cats'),
+            title: Text(
+              'Cats',
+              style: TextStyle(
+                  fontFamily: "Rubik",
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13.sp),
+            ),
           ),
           ListTile(
             onTap: () {
               Dioproivder.getCategoryList('Funny');
               AppRouter.pushWidget(CategoryScreen(Title: 'Funny'));
             },
-            leading: Icon(
+            leading: const Icon(
               Icons.label_important_outline,
               size: 24,
               color: Colors.white,
             ),
-            title: Text('Funny'),
+            title: Text(
+              'Funny',
+              style: TextStyle(
+                  fontFamily: "Rubik",
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13.sp),
+            ),
           ),
           ListTile(
             onTap: () {
               Dioproivder.getCategoryList('Meme');
               AppRouter.pushWidget(CategoryScreen(Title: 'Meme'));
             },
-            leading: Icon(
+            leading: const Icon(
               Icons.label_important_outline,
               size: 24,
               color: Colors.white,
             ),
-            title: Text('Meme'),
+            title: Text(
+              'Meme',
+              style: TextStyle(
+                  fontFamily: "Rubik",
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13.sp),
+            ),
           ),
           ListTile(
             onTap: () {
               Dioproivder.getCategoryList('Cars');
               AppRouter.pushWidget(CategoryScreen(Title: 'Cars'));
             },
-            leading: Icon(
+            leading: const Icon(
               Icons.label_important_outline,
               size: 24,
               color: Colors.white,
             ),
-            title: Text('Cars'),
+            title: Text(
+              'Cars',
+              style: TextStyle(
+                  fontFamily: "Rubik",
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13.sp),
+            ),
           ),
-          Divider(
+          const Divider(
             color: Colors.white,
           ),
           ListTile(
             onTap: () => Authprovider.SignOut(),
-            leading: Icon(
+            leading: const Icon(
               Icons.exit_to_app_rounded,
               size: 24,
               color: Colors.red,
             ),
-            title: Text('Sign Out'),
+            title: Text(
+              'Sign Out',
+              style: TextStyle(
+                  fontFamily: "Rubik",
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13.sp),
+            ),
           ),
         ]),
       );

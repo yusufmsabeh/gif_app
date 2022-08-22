@@ -12,7 +12,7 @@ class DioHelper {
         'https://api.giphy.com/v1/gifs/trending?api_key=C3K4QIt7Onh1W85eE7jFoeyHCurqOEyz&limit=50&rating=g');
     List data = response.data['data'];
     List<AppGif> gif = data.map((e) => AppGif.fromJson(e)).toList();
-    log(gif.length.toString());
+
     return gif;
   }
 
@@ -29,7 +29,7 @@ class DioHelper {
         'https://api.giphy.com/v1/stickers/trending?api_key=C3K4QIt7Onh1W85eE7jFoeyHCurqOEyz&limit=50&rating=g');
     List data = response.data['data'];
     List<AppGif> stickers = data.map((e) => AppGif.fromJson(e)).toList();
-    log(stickers.length.toString());
+
     return stickers;
   }
 
@@ -39,13 +39,6 @@ class DioHelper {
     List data = response.data['data'];
     List<AppGif> stickers = data.map((e) => AppGif.fromJson(e)).toList();
     return stickers;
-  }
-
-  getRandomGif() async {
-    Response response = await dio.get(
-        "https://api.giphy.com/v1/gifs/random?api_key=C3K4QIt7Onh1W85eE7jFoeyHCurqOEyz&tag=&rating=g");
-
-    return AppGif.fromJson(response.data['data']);
   }
 
   Future<List<AppGif>> getGifByIds(List Ids) async {
@@ -59,7 +52,7 @@ class DioHelper {
         'https://api.giphy.com/v1/gifs?api_key=C3K4QIt7Onh1W85eE7jFoeyHCurqOEyz&ids=$idsUrl');
     List data = response.data['data'];
     List<AppGif> favoritGif = data.map((e) => AppGif.fromJson(e)).toList();
-    log(favoritGif.length.toString());
+
     return favoritGif;
   }
 }

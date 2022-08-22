@@ -7,6 +7,7 @@ import 'package:flutter_share/flutter_share.dart';
 import 'package:gif_app/AppRouter/AppRouter.dart';
 import 'package:gif_app/Helpers/DioHelper.dart';
 import 'package:gif_app/Model/Gif.dart';
+import 'package:gif_app/Providers/AuthProvider.dart';
 import 'package:gif_app/Providers/FireStoreProvider.dart';
 
 import 'package:gif_app/Providers/UIProvider.dart';
@@ -25,20 +26,16 @@ class DioProvider extends ChangeNotifier {
   List<AppGif> trendingGif = [];
   List<AppGif> trendingSticker = [];
   List<AppGif> categoryList = [];
-
-  AppGif? randomGif;
-
+  bool isLoading = false;
   getTrendingGif([String? search]) async {
+    changeLoadingState();
     if (search == null || search == '')
       trendingGif = await DioHelper.dioHelper.getTrendingGif();
     else
       trendingGif = await DioHelper.dioHelper.getSearchResult(search);
-    notifyListeners();
-  }
 
-  getRandomGif() async {
-    randomGif = await DioHelper.dioHelper.getRandomGif();
     notifyListeners();
+    changeLoadingState();
   }
 
   SearchFunctoin(String value) {
@@ -51,12 +48,15 @@ class DioProvider extends ChangeNotifier {
   }
 
   getTrendingSticker([String? search]) async {
+    changeLoadingState();
+
     if (search == null || search == '')
       trendingSticker = await DioHelper.dioHelper.getTrendingSticker();
     else
       trendingSticker =
           await DioHelper.dioHelper.getSearchResultSticker(search);
     notifyListeners();
+    changeLoadingState();
   }
 
   Future<List<AppGif>> getGifByIds(List ids) async {
@@ -64,8 +64,11 @@ class DioProvider extends ChangeNotifier {
   }
 
   getCategoryList(String search) async {
+    changeLoadingState();
+
     categoryList = await DioHelper.dioHelper.getSearchResult(search);
     notifyListeners();
+    changeLoadingState();
   }
 
   share() async {
@@ -89,7 +92,12 @@ class DioProvider extends ChangeNotifier {
     final temp = await getTemporaryDirectory();
     final String path = '${temp.path}/${appGif.title}.gif';
     File(path).writeAsBytesSync(bytes);
-    log(path);
+
     await Share.shareFiles(text: appGif.title, [path]);
+  }
+
+  changeLoadingState() {
+    isLoading = !isLoading;
+    notifyListeners();
   }
 }

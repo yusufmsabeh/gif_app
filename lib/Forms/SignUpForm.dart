@@ -29,25 +29,26 @@ class SignUpForm extends StatelessWidget {
               SizedBox(
                 height: 10.h,
               ),
-              SizedBox(width: double.infinity, child: Text("Create account ")),
+              const SizedBox(
+                  width: double.infinity, child: Text("Create account ")),
               SizedBox(
                 height: 30.h,
               ),
-              SizedBox(width: double.infinity, child: Text("Email")),
+              const SizedBox(width: double.infinity, child: Text("Email")),
               TextFormField(
                 controller: Authprovider.emailSignUpController,
               ),
               SizedBox(
                 height: 15.h,
               ),
-              SizedBox(width: double.infinity, child: Text("Username")),
+              const SizedBox(width: double.infinity, child: Text("Username")),
               TextFormField(
                 controller: Authprovider.userNameSignUpController,
               ),
               SizedBox(
                 height: 15.h,
               ),
-              SizedBox(width: double.infinity, child: Text("Password")),
+              const SizedBox(width: double.infinity, child: Text("Password")),
               TextFormField(
                 controller: Authprovider.passwordSignUpController,
               ),

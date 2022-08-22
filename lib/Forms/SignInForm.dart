@@ -29,19 +29,23 @@ class SignInForm extends StatelessWidget {
               SizedBox(
                 height: 10.h,
               ),
-              SizedBox(
+              const SizedBox(
                   width: double.infinity,
                   child: Text("Sign in with your account")),
               SizedBox(
                 height: 30.h,
               ),
-              SizedBox(width: double.infinity, child: Text("Email")),
-              TextFormField(),
+              const SizedBox(width: double.infinity, child: Text("Email")),
+              TextFormField(
+                controller: Authprovider.emailSignInController,
+              ),
               SizedBox(
                 height: 15.h,
               ),
-              SizedBox(width: double.infinity, child: Text("Password")),
-              TextFormField(),
+              const SizedBox(width: double.infinity, child: Text("Password")),
+              TextFormField(
+                controller: Authprovider.passwordSignInController,
+              ),
               SizedBox(
                 height: 20.h,
               ),
@@ -64,13 +68,12 @@ class SignInForm extends StatelessWidget {
                         ))),
               ),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Text('Forgot your password?'),
+                const Text('Forgot your password?'),
                 TextButton(
                     onPressed: () => showDialog(
                         context: context,
-                        builder: (context) =>
-                            ResetPasswordDialog()),
-                    child: Text("Reset here"))
+                        builder: (context) => const ResetPasswordDialog()),
+                    child: const Text("Reset here"))
               ])
             ],
           )),
