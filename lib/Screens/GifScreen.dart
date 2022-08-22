@@ -26,14 +26,18 @@ class GifScreen extends StatelessWidget {
           title: Text("GIF"),
           actions: [
             IconButton(
-                onPressed: () =>
-                    FireStoreprovider.addOrDeleteFavorites(appGif.id),
-                icon: Icon(
-                  Icons.favorite_border,
-                  color: FireStoreprovider.checkFavotites(appGif.id)
-                      ? Colors.red
-                      : Colors.black,
-                ))
+              onPressed: () =>
+                  FireStoreprovider.addOrDeleteFavorites(appGif.id),
+              icon: FireStoreprovider.checkFavotites(appGif.id)
+                  ? Image.asset('assets/favorite.png')
+                  : Image.asset('assets/unfavorite.png'),
+              // icon: Icon(
+              //   Icons.favorite_border,
+              //   color: FireStoreprovider.checkFavotites(appGif.id)
+              //       ? Colors.red
+              //       : Colors.black,
+              // )
+            )
           ],
         ),
         body: Center(
@@ -160,7 +164,7 @@ class GifScreen extends StatelessWidget {
                             children: const [
                               Text("Share"),
                               Spacer(),
-                              Icon(Icons.share),
+                              Icon(Icons.send_rounded),
                             ],
                           )),
                     ),
