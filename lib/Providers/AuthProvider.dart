@@ -21,39 +21,51 @@ class AuthProvider extends ChangeNotifier {
   TextEditingController passwordSignUpController = TextEditingController();
   TextEditingController userNameSignUpController = TextEditingController();
 
+  GlobalKey<FormState> signInKey = GlobalKey<FormState>();
+  GlobalKey<FormState> signUpKey = GlobalKey<FormState>();
+  GlobalKey<FormState> resetPasswordKey = GlobalKey<FormState>();
+
   bool isLoading = false;
 
   SignIn() async {
     ChangeLoadingState();
-    UserCredential? credential = await AuthHelper.instance
-        .SignIn(emailSignInController.text, passwordSignInController.text);
-    if (credential != null) {
-      Provider.of<FireStoreProvider>(AppRouter.navKey.currentContext!,
-              listen: false)
-          .getUser();
-      emailSignInController.clear();
-      passwordSignInController.clear();
-      AppRouter.pushWithReplacment(HomePage());
+    if (signInKey.currentState!.validate()) {
+      UserCredential? credential = await AuthHelper.instance
+          .SignIn(emailSignInController.text, passwordSignInController.text);
+      if (credential != null) {
+        Provider.of<FireStoreProvider>(AppRouter.navKey.currentContext!,
+                listen: false)
+            .getUser();
+        emailSignInController.clear();
+        passwordSignInController.clear();
+        AppRouter.pushWithReplacment(HomePage());
+      }
     }
     ChangeLoadingState();
   }
 
   SignUp() async {
     ChangeLoadingState();
-    UserCredential credential = await AuthHelper.instance
-        .SignUp(emailSignUpController.text, passwordSignUpController.text);
-    AppUser appUser = AppUser(
-        id: credential.user!.uid,
-        email: credential.user!.email,
-        username: userNameSignUpController.text);
-    await Provider.of<FireStoreProvider>(AppRouter.navKey.currentContext!,
-            listen: false)
-        .saveUser(appUser);
-    emailSignUpController.clear();
-    passwordSignUpController.clear();
-    userNameSignUpController.clear();
-    Provider.of<UIProvider>(AppRouter.navKey.currentContext!, listen: false)
-        .changeSigInUpPage(0);
+
+    if (signUpKey.currentState!.validate()) {
+      UserCredential? credential = await AuthHelper.instance
+          .SignUp(emailSignUpController.text, passwordSignUpController.text);
+      if (credential != null) {
+        AppUser appUser = AppUser(
+            id: credential.user!.uid,
+            email: credential.user!.email,
+            username: userNameSignUpController.text);
+        await Provider.of<FireStoreProvider>(AppRouter.navKey.currentContext!,
+                listen: false)
+            .saveUser(appUser);
+        emailSignUpController.clear();
+        passwordSignUpController.clear();
+        userNameSignUpController.clear();
+        Provider.of<UIProvider>(AppRouter.navKey.currentContext!, listen: false)
+            .changeSigInUpPage(0);
+      }
+    }
+    log("the app still working");
     ChangeLoadingState();
   }
 
@@ -66,9 +78,11 @@ class AuthProvider extends ChangeNotifier {
   }
 
   ResetPassword() async {
-    await AuthHelper.instance.ResetPassword(resetPasswordContoller.text);
-    resetPasswordContoller.clear();
-    AppRouter.popWidget();
+    if (resetPasswordKey.currentState!.validate()) {
+      await AuthHelper.instance.ResetPassword(resetPasswordContoller.text);
+      resetPasswordContoller.clear();
+      AppRouter.popWidget();
+    }
   }
 
   User? getCurrentUser() {

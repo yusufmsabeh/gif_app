@@ -9,4 +9,18 @@ class MethodProvider {
         .favorites
         .contains(id);
   }
+
+  passwordValidate(String? value) {
+    if (value == null || value.length == 0) return "This valid is required";
+    if (value.length < 6) return "Week Password";
+  }
+
+  emailValidate(String? value) {
+    if (value == null || value.length == 0) return 'This valid is required';
+    if (!value.contains('@') || !value.contains('.com')) return "Invalid Email";
+  }
+
+  userNameValidate(String? value) {
+    if (value == null || value.length == 0) return 'This valid is required';
+  }
 }

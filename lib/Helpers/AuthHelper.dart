@@ -1,4 +1,8 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:gif_app/AppRouter/AppRouter.dart';
 
 class AuthHelper {
   static AuthHelper instance = AuthHelper._();
@@ -15,8 +19,26 @@ class AuthHelper {
       return credential;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
+        AppRouter.showAlertDialog('The password provided is too weak.');
+        showDialog(
+          context: AppRouter.navKey.currentContext!,
+          builder: (context) {
+            return AlertDialog(
+              content: Text('The password provided is too weak.'),
+            );
+          },
+        );
         print('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
+        showDialog(
+          context: AppRouter.navKey.currentContext!,
+          builder: (context) {
+            return AlertDialog(
+              content: Text('The account already exists for that email.'),
+            );
+          },
+        );
+
         print('The account already exists for that email.');
       }
     } catch (e) {
@@ -31,8 +53,26 @@ class AuthHelper {
       return credential;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
+        log('usernot fount');
+        showDialog(
+          context: AppRouter.navKey.currentContext!,
+          builder: (context) {
+            return AlertDialog(
+              content: Text('No user found for that email.'),
+            );
+          },
+        );
         print('No user found for that email.');
       } else if (e.code == 'wrong-password') {
+        showDialog(
+          context: AppRouter.navKey.currentContext!,
+          builder: (context) {
+            return AlertDialog(
+              content: Text('Wrong password provided for that user.'),
+            );
+          },
+        );
+
         print('Wrong password provided for that user.');
       }
     }

@@ -16,4 +16,8 @@ class AppRouter {
   static popWidget() {
     Navigator.pop(navKey.currentContext!);
   }
+
+  static showAlertDialog(String message) {
+    pushWidget(showAlertDialog(message));
+  }
 }
