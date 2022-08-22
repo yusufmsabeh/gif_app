@@ -8,6 +8,8 @@ import 'package:flutter_share/flutter_share.dart';
 import 'package:gif_app/AppRouter/AppRouter.dart';
 import 'package:gif_app/Model/Gif.dart';
 import 'package:gif_app/Providers/DioProvider.dart';
+import 'package:gif_app/Providers/FireStoreProvider.dart';
+import 'package:gif_app/Providers/MethodsProvider.dart';
 import 'package:gif_app/Widgets/GifWidget.dart';
 import 'package:provider/provider.dart';
 
@@ -17,15 +19,34 @@ class GifScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<DioProvider>(builder: (context, provider, x) {
+    return Consumer3<DioProvider, FireStoreProvider, MethodProvider>(
+        builder: (context, Dioprovider, FireStoreprovider, Methodprovider, x) {
       return Scaffold(
-        appBar: AppBar(title: Text("GIF")),
+        appBar: AppBar(
+          title: Text("GIF"),
+          actions: [
+            IconButton(
+                onPressed: () =>
+                    FireStoreprovider.addOrDeleteFavorites(appGif.id),
+                icon: Icon(
+                  Icons.favorite_border,
+                  color: FireStoreprovider.checkFavotites(appGif.id)
+                      ? Colors.red
+                      : Colors.black,
+                ))
+          ],
+        ),
         body: Center(
           child: Column(children: [
             SizedBox(
               height: 20.h,
             ),
-            Image.network(appGif.url ?? ''),
+            SizedBox(
+                height: 300.h,
+                child: Image.network(
+                  appGif.url ?? '',
+                  fit: BoxFit.fill,
+                )),
             SizedBox(
               height: 20.h,
             ),
@@ -130,8 +151,11 @@ class GifScreen extends StatelessWidget {
                     SizedBox(
                       width: 100.w,
                       child: ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  Colors.green)),
                           onPressed: () =>
-                              provider.DownLoadImageAndSahre(appGif),
+                              Dioprovider.DownLoadImageAndSahre(appGif),
                           child: Row(
                             children: const [
                               Text("Share"),

@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gif_app/AppRouter/AppRouter.dart';
 import 'package:gif_app/Providers/AuthProvider.dart';
 import 'package:gif_app/Providers/FireStoreProvider.dart';
+import 'package:gif_app/Providers/MethodsProvider.dart';
 import 'package:gif_app/Providers/UIProvider.dart';
 import 'package:gif_app/Screens/Homepage.dart';
 import 'package:gif_app/Screens/SignupSigninScreen.dart';
@@ -30,9 +31,10 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<AuthProvider>(
             create: (context) => AuthProvider()),
+        ChangeNotifierProvider(create: (context) => FireStoreProvider()),
         ChangeNotifierProvider<DioProvider>(create: (context) => DioProvider()),
         ChangeNotifierProvider<UIProvider>(create: (context) => UIProvider()),
-        ChangeNotifierProvider(create: (context) => FireStoreProvider())
+        Provider(create: (context) => MethodProvider())
       ],
       child: ScreenUtilInit(
           designSize: const Size(360, 690),

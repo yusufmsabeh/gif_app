@@ -7,6 +7,7 @@ import 'package:flutter_share/flutter_share.dart';
 import 'package:gif_app/AppRouter/AppRouter.dart';
 import 'package:gif_app/Helpers/DioHelper.dart';
 import 'package:gif_app/Model/Gif.dart';
+import 'package:gif_app/Providers/FireStoreProvider.dart';
 
 import 'package:gif_app/Providers/UIProvider.dart';
 import 'package:http/http.dart' as http;
@@ -17,11 +18,13 @@ import 'package:share_plus/share_plus.dart';
 class DioProvider extends ChangeNotifier {
   TextEditingController searchBarController = TextEditingController();
   DioProvider() {
+    Provider.of<FireStoreProvider>(AppRouter.navKey.currentContext!).getUser();
     getTrendingGif();
     getTrendingSticker();
   }
   List<AppGif> trendingGif = [];
   List<AppGif> trendingSticker = [];
+  List<AppGif> categoryList = [];
 
   AppGif? randomGif;
 
@@ -53,6 +56,15 @@ class DioProvider extends ChangeNotifier {
     else
       trendingSticker =
           await DioHelper.dioHelper.getSearchResultSticker(search);
+    notifyListeners();
+  }
+
+  Future<List<AppGif>> getGifByIds(List ids) async {
+    return await DioHelper.dioHelper.getGifByIds(ids);
+  }
+
+  getCategoryList(String search) async {
+    categoryList = await DioHelper.dioHelper.getSearchResult(search);
     notifyListeners();
   }
 

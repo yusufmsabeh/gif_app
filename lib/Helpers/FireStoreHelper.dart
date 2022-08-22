@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gif_app/Model/AppUser.dart';
 import 'package:gif_app/Model/Gif.dart';
@@ -19,11 +21,13 @@ class FireStoreHelper {
             .collection(AppUserFileds.collectionName)
             .doc(id)
             .get();
-    return AppUser.fromJson(documentSnapshot.data()!);
+    AppUser appUser = AppUser.fromJson(documentSnapshot.data()!);
+    appUser.id = id;
+    return appUser;
   }
 
-  addToFivorites(AppGif appGif, AppUser appUser) async {
-    appUser.favorites.add(appGif);
+  updateUser(AppUser appUser) async {
+    log(appUser.id ?? 'no id');
     await FirebaseFirestore.instance
         .collection(AppUserFileds.collectionName)
         .doc(appUser.id)

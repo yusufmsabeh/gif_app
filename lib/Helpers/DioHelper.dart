@@ -47,4 +47,19 @@ class DioHelper {
 
     return AppGif.fromJson(response.data['data']);
   }
+
+  Future<List<AppGif>> getGifByIds(List Ids) async {
+    if (Ids.length == 0) {
+      return [];
+    }
+    String idsUrl = Ids.toString();
+    idsUrl = idsUrl.substring(1, idsUrl.length - 1);
+
+    Response response = await dio.get(
+        'https://api.giphy.com/v1/gifs?api_key=C3K4QIt7Onh1W85eE7jFoeyHCurqOEyz&ids=$idsUrl');
+    List data = response.data['data'];
+    List<AppGif> favoritGif = data.map((e) => AppGif.fromJson(e)).toList();
+    log(favoritGif.length.toString());
+    return favoritGif;
+  }
 }

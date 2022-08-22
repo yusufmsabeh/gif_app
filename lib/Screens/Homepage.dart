@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gif_app/Providers/AuthProvider.dart';
 import 'package:gif_app/Providers/DioProvider.dart';
 import 'package:gif_app/Providers/UIProvider.dart';
+import 'package:gif_app/Screens/DrawerScreen.dart';
 import 'package:gif_app/Screens/EmptyScreen.dart';
 import 'package:gif_app/Widgets/GifWidget.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +18,7 @@ class HomePage extends StatelessWidget {
     return Consumer3<DioProvider, UIProvider, AuthProvider>(
         builder: (context, Dioprovider, UIprovider, Authprovider, x) {
       return Scaffold(
+          drawer: DrawerScreen(),
           bottomNavigationBar: BottomNavigationBar(
               onTap: (value) =>
                   UIprovider.changeBottomNavigationBarIndex(value),
@@ -28,11 +30,6 @@ class HomePage extends StatelessWidget {
                     icon: Icon(Icons.sticky_note_2_rounded), label: "Stickers")
               ]),
           appBar: AppBar(
-            actions: [
-              IconButton(
-                  onPressed: () => Authprovider.SignOut(),
-                  icon: Icon(Icons.exit_to_app))
-            ],
             title: Container(
               margin: EdgeInsets.only(top: 5.h),
               width: 267.w,

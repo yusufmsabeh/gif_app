@@ -11,7 +11,7 @@ class AppUser {
   String? id;
   String? username;
   String? email;
-  List<AppGif> favorites = [];
+  List favorites = [];
   AppUser({
     required this.id,
     required this.username,
@@ -19,10 +19,10 @@ class AppUser {
   });
 
   AppUser.fromJson(Map<String, dynamic> json) {
-    username = json[AppUserFileds.userName];
-    email = json[AppUserFileds.email];
-    List<Map<String, dynamic>> favoritesMap = json[AppUserFileds.favorites];
-    favorites = favoritesMap.map((e) => AppGif.fromJson(e)).toList();
+    username = json[AppUserFileds.userName] as String;
+    email = json[AppUserFileds.email] as String;
+
+    favorites = json[AppUserFileds.favorites];
   }
 
   toJson() => {
