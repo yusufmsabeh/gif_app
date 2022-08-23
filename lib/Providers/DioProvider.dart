@@ -85,6 +85,9 @@ class DioProvider extends ChangeNotifier {
   }
 
   DownLoadImageAndSahre(AppGif appGif) async {
+    Provider.of<FireStoreProvider>(AppRouter.navKey.currentContext!,
+            listen: false)
+        .changeLoadingState();
     final uri = Uri.parse(appGif.url ?? '');
     final response = await http.get(uri);
     final bytes = response.bodyBytes;
@@ -94,6 +97,9 @@ class DioProvider extends ChangeNotifier {
     File(path).writeAsBytesSync(bytes);
 
     await Share.shareFiles(text: appGif.title, [path]);
+    Provider.of<FireStoreProvider>(AppRouter.navKey.currentContext!,
+            listen: false)
+        .changeLoadingState();
   }
 
   changeLoadingState() {
