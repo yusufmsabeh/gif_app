@@ -78,6 +78,7 @@ class FireStoreProvider extends ChangeNotifier {
   }
 
   uploadGif() async {
+    changeLoadingState();
     String fileUrl = await uplaodFile();
     AppGif appGif = AppGif(
         id: '',
@@ -86,6 +87,8 @@ class FireStoreProvider extends ChangeNotifier {
         appUser: AppUserGif(avatarUrl: '', userName: appUser!.username),
         rating: 'me');
     await FireStoreHelper.instance.uploadGif(appGif, appUser!.id!);
+    changeLoadingState();
+    gifTitle.clear();
   }
 
   uplaodFile() async {

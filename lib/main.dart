@@ -27,6 +27,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Map<int, Color> color = {
+      50: Color.fromRGBO(167, 201, 87, .1),
+      100: Color.fromRGBO(167, 201, 87, .2),
+      200: Color.fromRGBO(167, 201, 87, .3),
+      300: Color.fromRGBO(167, 201, 87, .4),
+      400: Color.fromRGBO(167, 201, 87, .5),
+      500: Color.fromRGBO(167, 201, 87, .6),
+      600: Color.fromRGBO(167, 201, 87, .7),
+      700: Color.fromRGBO(167, 201, 87, .8),
+      800: Color.fromRGBO(167, 201, 87, .9),
+      900: Color.fromRGBO(167, 201, 87, 1),
+    };
+    MaterialColor colorCustom = MaterialColor(0xFF6A994E, color);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<AuthProvider>(
@@ -44,7 +57,9 @@ class MyApp extends StatelessWidget {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               navigatorKey: AppRouter.navKey,
-              theme: ThemeData(primaryColorLight: Colors.red),
+              theme: ThemeData(
+                  colorScheme:
+                      ColorScheme.fromSwatch(primarySwatch: colorCustom)),
               home:
                   Provider.of<UIProvider>(context).HomePageController(context),
             );

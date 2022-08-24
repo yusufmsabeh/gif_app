@@ -17,7 +17,8 @@ class DrawerScreen extends StatelessWidget {
     return Consumer3<FireStoreProvider, AuthProvider, DioProvider>(
         builder: (context, FireStoreprovider, Authprovider, Dioproivder, x) {
       return Drawer(
-        backgroundColor: Colors.blue,
+        width: 210.w,
+        backgroundColor: Color.fromARGB(255, 56, 102, 65),
         child: ListView(children: [
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             Container(
@@ -30,7 +31,7 @@ class DrawerScreen extends StatelessWidget {
               child: Text(
                 "GIF",
                 style: TextStyle(
-                    color: Colors.blue,
+                    color: Color.fromARGB(255, 106, 153, 78),
                     fontSize: 30.sp,
                     fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
@@ -55,11 +56,12 @@ class DrawerScreen extends StatelessWidget {
             leading: const Icon(
               Icons.favorite,
               size: 24,
-              color: Colors.white,
+              color: Color.fromARGB(255, 188, 71, 73),
             ),
             title: Text(
               'Favorites',
               style: TextStyle(
+                  color: Color.fromARGB(255, 242, 232, 207),
                   fontFamily: "Rubik",
                   fontWeight: FontWeight.bold,
                   fontSize: 13.sp),
@@ -71,13 +73,14 @@ class DrawerScreen extends StatelessWidget {
               AppRouter.pushWidget(const MyGifsScreen());
             },
             leading: const Icon(
-              Icons.perm_identity_outlined,
+              Icons.gif_box_outlined,
               size: 24,
               color: Colors.white,
             ),
             title: Text(
               'My GIF',
               style: TextStyle(
+                  color: Color.fromARGB(255, 242, 232, 207),
                   fontFamily: "Rubik",
                   fontWeight: FontWeight.bold,
                   fontSize: 13.sp),
@@ -99,6 +102,7 @@ class DrawerScreen extends StatelessWidget {
             title: Text(
               'Dogs',
               style: TextStyle(
+                  color: Color.fromARGB(255, 242, 232, 207),
                   fontFamily: "Rubik",
                   fontWeight: FontWeight.bold,
                   fontSize: 13.sp),
@@ -117,6 +121,7 @@ class DrawerScreen extends StatelessWidget {
             title: Text(
               'Cats',
               style: TextStyle(
+                  color: Color.fromARGB(255, 242, 232, 207),
                   fontFamily: "Rubik",
                   fontWeight: FontWeight.bold,
                   fontSize: 13.sp),
@@ -135,6 +140,7 @@ class DrawerScreen extends StatelessWidget {
             title: Text(
               'Funny',
               style: TextStyle(
+                  color: Color.fromARGB(255, 242, 232, 207),
                   fontFamily: "Rubik",
                   fontWeight: FontWeight.bold,
                   fontSize: 13.sp),
@@ -153,6 +159,7 @@ class DrawerScreen extends StatelessWidget {
             title: Text(
               'Meme',
               style: TextStyle(
+                  color: Color.fromARGB(255, 242, 232, 207),
                   fontFamily: "Rubik",
                   fontWeight: FontWeight.bold,
                   fontSize: 13.sp),
@@ -171,6 +178,7 @@ class DrawerScreen extends StatelessWidget {
             title: Text(
               'Cars',
               style: TextStyle(
+                  color: Color.fromARGB(255, 242, 232, 207),
                   fontFamily: "Rubik",
                   fontWeight: FontWeight.bold,
                   fontSize: 13.sp),
@@ -189,6 +197,7 @@ class DrawerScreen extends StatelessWidget {
             title: Text(
               'Sign Out',
               style: TextStyle(
+                  color: Colors.red,
                   fontFamily: "Rubik",
                   fontWeight: FontWeight.bold,
                   fontSize: 13.sp),

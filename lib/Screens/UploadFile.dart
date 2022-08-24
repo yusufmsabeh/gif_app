@@ -6,6 +6,8 @@ import 'package:gif_app/Providers/FireStoreProvider.dart';
 import 'package:gif_app/Screens/LoadingSpinner.dart';
 import 'package:provider/provider.dart';
 
+import '../AppRouter/AppRouter.dart';
+
 class UplaodFile extends StatelessWidget {
   const UplaodFile({Key? key}) : super(key: key);
 
@@ -68,14 +70,21 @@ class UplaodFile extends StatelessWidget {
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
                                         Colors.green)),
-                            onPressed: () {
-                              provider.uploadGif();
+                            onPressed: () async {
+                              await provider.uploadGif();
+                              AppRouter.popWidget();
                             },
                             child: Icon(Icons.upload_file_outlined)),
                       ]),
                 ),
               )),
-            )
+            ),
+            provider.isLoading
+                ? const Center(child: LoadingSpinner())
+                : const SizedBox(
+                    height: 0,
+                    width: 0,
+                  )
           ],
         );
       }),

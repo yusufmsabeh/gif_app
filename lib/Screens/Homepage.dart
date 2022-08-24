@@ -90,8 +90,8 @@ class HomePage extends StatelessWidget {
                     filled: true,
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30.r),
-                        borderSide:
-                            const BorderSide(width: 2, color: Colors.blue)),
+                        borderSide: const BorderSide(
+                            width: 2, color: Color.fromARGB(255, 188, 71, 73))),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30.r),
                         borderSide: const BorderSide(
