@@ -27,7 +27,6 @@ class AppGif {
     rating = json['rating'] ?? 'me';
     url = json['url'] ?? 'no url';
     appUser = AppUserGif.fromFirebaseJson(json['user']);
-    log('end of cons appgif');
   }
 
   toMap() => {

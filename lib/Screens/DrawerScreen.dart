@@ -72,10 +72,10 @@ class DrawerScreen extends StatelessWidget {
               FireStoreprovider.getMyGifs();
               AppRouter.pushWidget(const MyGifsScreen());
             },
-            leading: const Icon(
-              Icons.gif_box_outlined,
-              size: 24,
-              color: Colors.white,
+            leading: Image.asset(
+              "assets/gif.png",
+              width: 25.w,
+              height: 25.h,
             ),
             title: Text(
               'My GIF',
@@ -94,10 +94,10 @@ class DrawerScreen extends StatelessWidget {
               Dioproivder.getCategoryList('Dogs');
               AppRouter.pushWidget(CategoryScreen(Title: 'Dogs'));
             },
-            leading: const Icon(
-              Icons.label_important_outline,
-              size: 24,
-              color: Colors.white,
+            leading: Image.asset(
+              "assets/label.png",
+              width: 25.w,
+              height: 25.h,
             ),
             title: Text(
               'Dogs',
@@ -113,10 +113,10 @@ class DrawerScreen extends StatelessWidget {
               Dioproivder.getCategoryList('Cats');
               AppRouter.pushWidget(CategoryScreen(Title: 'Cats'));
             },
-            leading: const Icon(
-              Icons.label_important_outline,
-              size: 24,
-              color: Colors.white,
+            leading: Image.asset(
+              "assets/label.png",
+              width: 25.w,
+              height: 25.h,
             ),
             title: Text(
               'Cats',
@@ -132,10 +132,10 @@ class DrawerScreen extends StatelessWidget {
               Dioproivder.getCategoryList('Funny');
               AppRouter.pushWidget(CategoryScreen(Title: 'Funny'));
             },
-            leading: const Icon(
-              Icons.label_important_outline,
-              size: 24,
-              color: Colors.white,
+            leading: Image.asset(
+              "assets/label.png",
+              width: 25.w,
+              height: 25.h,
             ),
             title: Text(
               'Funny',
@@ -151,10 +151,10 @@ class DrawerScreen extends StatelessWidget {
               Dioproivder.getCategoryList('Meme');
               AppRouter.pushWidget(CategoryScreen(Title: 'Meme'));
             },
-            leading: const Icon(
-              Icons.label_important_outline,
-              size: 24,
-              color: Colors.white,
+            leading: Image.asset(
+              "assets/label.png",
+              width: 25.w,
+              height: 25.h,
             ),
             title: Text(
               'Meme',
@@ -170,10 +170,10 @@ class DrawerScreen extends StatelessWidget {
               Dioproivder.getCategoryList('Cars');
               AppRouter.pushWidget(CategoryScreen(Title: 'Cars'));
             },
-            leading: const Icon(
-              Icons.label_important_outline,
-              size: 24,
-              color: Colors.white,
+            leading: Image.asset(
+              "assets/label.png",
+              width: 25.w,
+              height: 25.h,
             ),
             title: Text(
               'Cars',
@@ -189,10 +189,10 @@ class DrawerScreen extends StatelessWidget {
           ),
           ListTile(
             onTap: () => Authprovider.SignOut(),
-            leading: const Icon(
-              Icons.exit_to_app_rounded,
-              size: 24,
-              color: Colors.red,
+            leading: Image.asset(
+              "assets/signout.png",
+              width: 25.w,
+              height: 25.h,
             ),
             title: Text(
               'Sign Out',

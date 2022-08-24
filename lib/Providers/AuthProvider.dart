@@ -65,7 +65,7 @@ class AuthProvider extends ChangeNotifier {
             .changeSigInUpPage(0);
       }
     }
-    log("the app still working");
+
     ChangeLoadingState();
   }
 

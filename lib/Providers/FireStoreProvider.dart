@@ -22,6 +22,7 @@ class FireStoreProvider extends ChangeNotifier {
   bool isLoading = false;
 
   File? selectedImage;
+  GlobalKey<FormState> uploadGifKey = GlobalKey<FormState>();
   TextEditingController gifTitle = TextEditingController();
 
   FireStoreProvider() {
@@ -35,8 +36,8 @@ class FireStoreProvider extends ChangeNotifier {
     User? user = Provider.of<AuthProvider>(AppRouter.navKey.currentContext!,
             listen: false)
         .getCurrentUser();
-    log(user!.uid);
-    appUser = await FireStoreHelper.instance.getUser(user.uid);
+
+    appUser = await FireStoreHelper.instance.getUser(user!.uid);
   }
 
   addOrDeleteFavorites(String id) {
@@ -78,17 +79,25 @@ class FireStoreProvider extends ChangeNotifier {
   }
 
   uploadGif() async {
-    changeLoadingState();
-    String fileUrl = await uplaodFile();
-    AppGif appGif = AppGif(
-        id: '',
-        title: gifTitle.text,
-        url: fileUrl,
-        appUser: AppUserGif(avatarUrl: '', userName: appUser!.username),
-        rating: 'me');
-    await FireStoreHelper.instance.uploadGif(appGif, appUser!.id!);
-    changeLoadingState();
-    gifTitle.clear();
+    if (selectedImage == null) {
+      ScaffoldMessenger.of(AppRouter.navKey.currentContext!)
+          .showSnackBar(SnackBar(content: Text("You must pick a file first")));
+    } else {
+      if (uploadGifKey.currentState!.validate()) {
+        changeLoadingState();
+        String fileUrl = await uplaodFile();
+        AppGif appGif = AppGif(
+            id: '',
+            title: gifTitle.text,
+            url: fileUrl,
+            appUser: AppUserGif(avatarUrl: '', userName: appUser!.username),
+            rating: 'me');
+        await FireStoreHelper.instance.uploadGif(appGif, appUser!.id!);
+        changeLoadingState();
+        gifTitle.clear();
+        AppRouter.popWidget();
+      }
+    }
   }
 
   uplaodFile() async {
@@ -105,5 +114,9 @@ class FireStoreProvider extends ChangeNotifier {
   getMyGifs() async {
     MyGif = await FireStoreHelper.instance.getMyGif(appUser!.id!);
     notifyListeners();
+  }
+
+  emptyValidation(String? value) {
+    if (value == null || value.length == 0) return 'this valid is required';
   }
 }

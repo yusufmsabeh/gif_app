@@ -51,7 +51,7 @@ class GifScreen extends StatelessWidget {
                     padding: EdgeInsets.all(20.w),
                     width: double.infinity,
                     decoration: BoxDecoration(
-                        color: Colors.blue,
+                        color: Color.fromARGB(255, 106, 153, 78),
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(25.r),
                             topRight: Radius.circular(25.r))),
@@ -78,45 +78,16 @@ class GifScreen extends StatelessWidget {
                             child: Text(
                               appGif.title ?? "",
                               style: TextStyle(
-                                  fontSize: 16.sp, fontWeight: FontWeight.bold),
-                              textAlign: TextAlign.start,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                          Divider(color: Colors.white, thickness: 2.w),
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                          SizedBox(
-                            width: double.infinity,
-                            child: Text(
-                              "Rating:",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20.sp,
+                                  color: Color.fromARGB(255, 56, 102, 65),
+                                  fontSize: 16.sp,
                                   fontWeight: FontWeight.bold),
                               textAlign: TextAlign.start,
                             ),
                           ),
                           SizedBox(
-                            height: 5.h,
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(left: 20.w),
-                            width: double.infinity,
-                            child: Text(
-                              appGif.rating ?? "",
-                              style: TextStyle(
-                                  fontSize: 16.sp, fontWeight: FontWeight.bold),
-                              textAlign: TextAlign.start,
-                            ),
-                          ),
-                          SizedBox(
                             height: 10.h,
                           ),
-                          Divider(color: Colors.white, thickness: 2.w),
+                          Divider(color: Colors.white, thickness: 0.5.w),
                           SizedBox(
                             height: 10.h,
                           ),
@@ -139,11 +110,15 @@ class GifScreen extends StatelessWidget {
                                 child: Text(
                                   appGif.appUser!.userName ?? '',
                                   style: const TextStyle(
-                                      color: Colors.white,
+                                      color: Color.fromARGB(255, 242, 232, 207),
                                       fontWeight: FontWeight.bold),
                                 ),
                               )
                             ]),
+                          ),
+                          Divider(color: Colors.white, thickness: 0.5.w),
+                          SizedBox(
+                            height: 10.h,
                           ),
                           SizedBox(
                             width: 100.w,
@@ -151,7 +126,7 @@ class GifScreen extends StatelessWidget {
                                 style: ButtonStyle(
                                     backgroundColor:
                                         MaterialStateProperty.all<Color>(
-                                            Colors.green)),
+                                            Color.fromARGB(255, 188, 71, 73))),
                                 onPressed: () =>
                                     Dioprovider.DownLoadImageAndSahre(appGif),
                                 child: Row(

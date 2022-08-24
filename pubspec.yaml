@@ -75,6 +75,13 @@ flutter:
   assets:
     - assets/unfavorite.png
     - assets/favorite.png
+    - assets/selectedgif.png
+    - assets/unselectedgif.png
+    - assets/selectedstickers.png
+    - assets/unselectedstickers.png
+    - assets/signout.png
+    - assets/label.png
+    - assets/gif.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

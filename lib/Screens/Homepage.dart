@@ -60,14 +60,35 @@ class HomePage extends StatelessWidget {
           ),
           drawer: const DrawerScreen(),
           bottomNavigationBar: BottomNavigationBar(
+              selectedFontSize: 0,
               onTap: (value) =>
                   UIprovider.changeBottomNavigationBarIndex(value),
               currentIndex: UIprovider.bottomNavigationBarIndex,
-              items: const [
+              items: [
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.gif_box_outlined), label: "GIF"),
+                    activeIcon: Image.asset(
+                      'assets/selectedgif.png',
+                      width: 30.w,
+                      height: 30.h,
+                    ),
+                    icon: Image.asset(
+                      'assets/unselectedgif.png',
+                      width: 30.w,
+                      height: 30.h,
+                    ),
+                    label: "GIF"),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.sticky_note_2_rounded), label: "Stickers")
+                    activeIcon: Image.asset(
+                      'assets/selectedstickers.png',
+                      width: 30.w,
+                      height: 30.h,
+                    ),
+                    icon: Image.asset(
+                      'assets/unselectedstickers.png',
+                      width: 30.w,
+                      height: 30.h,
+                    ),
+                    label: "Stickers")
               ]),
           appBar: AppBar(
             title: Container(

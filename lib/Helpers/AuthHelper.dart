@@ -53,7 +53,6 @@ class AuthHelper {
       return credential;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        log('usernot fount');
         showDialog(
           context: AppRouter.navKey.currentContext!,
           builder: (context) {

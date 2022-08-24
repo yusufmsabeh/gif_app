@@ -45,7 +45,6 @@ class FireStoreHelper {
   }
 
   Future<List<AppGif>> getMyGif(String uid) async {
-    log(uid);
     QuerySnapshot<Map<String, dynamic>> querySnapshot = await FirebaseFirestore
         .instance
         .collection('user')
@@ -55,7 +54,7 @@ class FireStoreHelper {
 
     List<QueryDocumentSnapshot<Map<String, dynamic>>> queryDocumentSnapshot =
         querySnapshot.docs;
-    log(queryDocumentSnapshot[0].data().toString());
+
     List<AppGif> gifs = [];
     queryDocumentSnapshot.forEach(
       (element) {

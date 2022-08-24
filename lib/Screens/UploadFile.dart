@@ -27,7 +27,7 @@ class UplaodFile extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
                 margin: EdgeInsets.symmetric(vertical: 15.h),
                 child: Form(
-                  // key: provider.addProductForm,
+                  key: provider.uploadGifKey,
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -56,8 +56,8 @@ class UplaodFile extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: TextFormField(
-                            // validator: (value) =>
-                            //     provider.emptyValidation(value),
+                            validator: (value) =>
+                                provider.emptyValidation(value),
                             controller: provider.gifTitle,
                             decoration: InputDecoration(hintText: "GIF Title"),
                           ),
@@ -72,7 +72,6 @@ class UplaodFile extends StatelessWidget {
                                         Colors.green)),
                             onPressed: () async {
                               await provider.uploadGif();
-                              AppRouter.popWidget();
                             },
                             child: Icon(Icons.upload_file_outlined)),
                       ]),
