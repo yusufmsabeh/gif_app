@@ -6,6 +6,7 @@ import 'package:gif_app/Providers/DioProvider.dart';
 import 'package:gif_app/Providers/FireStoreProvider.dart';
 import 'package:gif_app/Screens/CategoryScreen.dart';
 import 'package:gif_app/Screens/FavoritesScreen.dart';
+import 'package:gif_app/Screens/MyGifsScreen.dart';
 import 'package:provider/provider.dart';
 
 class DrawerScreen extends StatelessWidget {
@@ -58,6 +59,24 @@ class DrawerScreen extends StatelessWidget {
             ),
             title: Text(
               'Favorites',
+              style: TextStyle(
+                  fontFamily: "Rubik",
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13.sp),
+            ),
+          ),
+          ListTile(
+            onTap: () {
+              FireStoreprovider.getMyGifs();
+              AppRouter.pushWidget(const MyGifsScreen());
+            },
+            leading: const Icon(
+              Icons.perm_identity_outlined,
+              size: 24,
+              color: Colors.white,
+            ),
+            title: Text(
+              'My GIF',
               style: TextStyle(
                   fontFamily: "Rubik",
                   fontWeight: FontWeight.bold,

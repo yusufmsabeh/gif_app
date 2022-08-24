@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gif_app/AppRouter/AppRouter.dart';
 import 'package:gif_app/Providers/AuthProvider.dart';
 import 'package:gif_app/Providers/DioProvider.dart';
 import 'package:gif_app/Providers/UIProvider.dart';
 import 'package:gif_app/Screens/DrawerScreen.dart';
 import 'package:gif_app/Screens/LoadingSpinner.dart';
+import 'package:gif_app/Screens/UploadFile.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -15,6 +17,47 @@ class HomePage extends StatelessWidget {
     return Consumer3<DioProvider, UIProvider, AuthProvider>(
         builder: (context, Dioprovider, UIprovider, Authprovider, x) {
       return Scaffold(
+          floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+          floatingActionButton: GestureDetector(
+            onTap: (() {
+              AppRouter.pushWidget(UplaodFile());
+            }),
+            child: Container(
+              margin: EdgeInsets.only(right: 102.w),
+              height: 35.h,
+              padding: EdgeInsets.symmetric(horizontal: 15.w),
+              decoration: BoxDecoration(
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.grey,
+                      offset: Offset(0.0, 1.0), //(x,y)
+                      blurRadius: 6.0,
+                    ),
+                  ],
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(100.r)),
+              child: SizedBox(
+                width: 95.w,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.upload_file_outlined,
+                      color: Colors.green,
+                    ),
+                    TextButton(
+                      onPressed: null,
+                      child: Text(
+                        "UPLOAD",
+                        style: TextStyle(
+                            color: Colors.green, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
           drawer: const DrawerScreen(),
           bottomNavigationBar: BottomNavigationBar(
               onTap: (value) =>

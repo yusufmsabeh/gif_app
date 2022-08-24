@@ -21,6 +21,22 @@ class AppGif {
     url = json['images']['fixed_height_downsampled']['url'];
     appUser = AppUserGif.fromJson(json['user']);
   }
+  AppGif.fromFirebaseJson(Map<String, dynamic> json) {
+    id = json['id'] ?? '1';
+    title = json['title'] ?? 'no title';
+    rating = json['rating'] ?? 'me';
+    url = json['url'] ?? 'no url';
+    appUser = AppUserGif.fromFirebaseJson(json['user']);
+    log('end of cons appgif');
+  }
+
+  toMap() => {
+        'id': id,
+        'title': title,
+        "url": url,
+        'rating': 'Me',
+        'user': appUser!.toJson()
+      };
   @override
   String toString() {
     // TODO: implement toString

@@ -16,21 +16,18 @@ class GifScreen extends StatelessWidget {
         builder: (context, Dioprovider, FireStoreprovider, Methodprovider, x) {
       return Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: Text("GIF"),
           actions: [
-            IconButton(
-              onPressed: () =>
-                  FireStoreprovider.addOrDeleteFavorites(appGif.id),
-              icon: FireStoreprovider.checkFavotites(appGif.id)
-                  ? Image.asset('assets/favorite.png')
-                  : Image.asset('assets/unfavorite.png'),
-              // icon: Icon(
-              //   Icons.favorite_border,
-              //   color: FireStoreprovider.checkFavotites(appGif.id)
-              //       ? Colors.red
-              //       : Colors.black,
-              // )
-            )
+            appGif.id == ''
+                ? SizedBox()
+                : IconButton(
+                    onPressed: () =>
+                        FireStoreprovider.addOrDeleteFavorites(appGif.id),
+                    icon: FireStoreprovider.checkFavotites(appGif.id)
+                        ? Image.asset('assets/favorite.png')
+                        : Image.asset('assets/unfavorite.png'),
+                  )
           ],
         ),
         body: Stack(
