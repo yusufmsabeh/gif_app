@@ -81,6 +81,7 @@ flutter:
     - assets/unselectedstickers.png
     - assets/signout.png
     - assets/label.png
+    - assets/fileupload.png
     - assets/gif.png
 
 

@@ -73,7 +73,7 @@ class SignUpForm extends StatelessWidget {
                         width: 314.w,
                         height: 70.h,
                         decoration: BoxDecoration(
-                            color: Colors.blue,
+                            color: Colors.green,
                             borderRadius: BorderRadius.circular(10.r)),
                         child: Align(
                             alignment: Alignment.center,

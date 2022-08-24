@@ -15,7 +15,7 @@ class ResetPasswordDialog extends StatelessWidget {
         return SizedBox(
           child: Dialog(
             insetPadding: EdgeInsets.symmetric(horizontal: 15.w),
-            backgroundColor: Colors.blue,
+            backgroundColor: Color(0xFF6A994E),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.r)),
             child: Container(

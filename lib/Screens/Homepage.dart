@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
           floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
           floatingActionButton: GestureDetector(
             onTap: (() {
-              AppRouter.pushWidget(UplaodFile());
+              AppRouter.pushWidget(const UplaodFile());
             }),
             child: Container(
               margin: EdgeInsets.only(right: 102.w),
@@ -41,16 +41,18 @@ class HomePage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
-                      Icons.upload_file_outlined,
-                      color: Colors.green,
+                    Image.asset(
+                      'assets/fileupload.png',
+                      width: 25.w,
+                      height: 25.h,
                     ),
-                    TextButton(
+                    const TextButton(
                       onPressed: null,
                       child: Text(
                         "UPLOAD",
                         style: TextStyle(
-                            color: Colors.green, fontWeight: FontWeight.bold),
+                            color: Color(0xFF4CAF50),
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],

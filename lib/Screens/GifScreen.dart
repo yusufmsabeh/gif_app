@@ -17,10 +17,10 @@ class GifScreen extends StatelessWidget {
       return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text("GIF"),
+          title: const Text("GIF"),
           actions: [
             appGif.id == ''
-                ? SizedBox()
+                ? const SizedBox()
                 : IconButton(
                     onPressed: () =>
                         FireStoreprovider.addOrDeleteFavorites(appGif.id),
@@ -51,7 +51,7 @@ class GifScreen extends StatelessWidget {
                     padding: EdgeInsets.all(20.w),
                     width: double.infinity,
                     decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 106, 153, 78),
+                        color: const Color.fromARGB(255, 106, 153, 78),
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(25.r),
                             topRight: Radius.circular(25.r))),
@@ -78,7 +78,7 @@ class GifScreen extends StatelessWidget {
                             child: Text(
                               appGif.title ?? "",
                               style: TextStyle(
-                                  color: Color.fromARGB(255, 56, 102, 65),
+                                  color: const Color.fromARGB(255, 56, 102, 65),
                                   fontSize: 16.sp,
                                   fontWeight: FontWeight.bold),
                               textAlign: TextAlign.start,
@@ -126,7 +126,8 @@ class GifScreen extends StatelessWidget {
                                 style: ButtonStyle(
                                     backgroundColor:
                                         MaterialStateProperty.all<Color>(
-                                            Color.fromARGB(255, 188, 71, 73))),
+                                            const Color.fromARGB(
+                                                255, 188, 71, 73))),
                                 onPressed: () =>
                                     Dioprovider.DownLoadImageAndSahre(appGif),
                                 child: Row(

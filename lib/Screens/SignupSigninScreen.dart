@@ -28,7 +28,7 @@ class SignupSigninScreen extends StatelessWidget {
                             height: 30.h,
                             margin: EdgeInsets.only(top: 30.h),
                             decoration: BoxDecoration(
-                                color: Colors.blue,
+                                color: Color(0xFF6A994E),
                                 borderRadius: BorderRadius.circular(10.r)),
                             child: Text(
                               "GIF",
@@ -44,7 +44,7 @@ class SignupSigninScreen extends StatelessWidget {
                             child: Text(
                               "CLUB",
                               style: TextStyle(
-                                  color: Colors.blue, fontSize: 30.sp),
+                                  color: Color(0xFF6A994E), fontSize: 30.sp),
                             ),
                           )
                         ]),
@@ -53,7 +53,7 @@ class SignupSigninScreen extends StatelessWidget {
                 Expanded(
                     child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.blue,
+                      color: Color(0xFF6A994E),
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25.r),
                           topRight: Radius.circular(25.r))),
@@ -75,7 +75,7 @@ class SignupSigninScreen extends StatelessWidget {
                                     style: TextStyle(
                                         color: UIprovder.SignInUpIndex == 0
                                             ? Colors.white
-                                            : Colors.grey,
+                                            : Color(0xFFA7C957),
                                         fontWeight: FontWeight.bold,
                                         fontSize: 15.sp),
                                   ),
@@ -90,7 +90,7 @@ class SignupSigninScreen extends StatelessWidget {
                                     style: TextStyle(
                                         color: UIprovder.SignInUpIndex == 1
                                             ? Colors.white
-                                            : Colors.grey,
+                                            : Color(0xFFA7C957),
                                         fontWeight: FontWeight.bold,
                                         fontSize: 15.sp),
                                   ),

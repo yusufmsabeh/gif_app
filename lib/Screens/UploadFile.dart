@@ -35,12 +35,12 @@ class UplaodFile extends StatelessWidget {
                           onTap: provider.getImage,
                           child: Container(
                             decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 238, 235, 235),
+                                color: const Color.fromARGB(255, 238, 235, 235),
                                 borderRadius: BorderRadius.circular(20)),
                             height: 300,
                             width: double.infinity,
                             child: provider.selectedImage == null
-                                ? Icon(
+                                ? const Icon(
                                     Icons.add,
                                     size: 40,
                                   )
@@ -59,7 +59,8 @@ class UplaodFile extends StatelessWidget {
                             validator: (value) =>
                                 provider.emptyValidation(value),
                             controller: provider.gifTitle,
-                            decoration: InputDecoration(hintText: "GIF Title"),
+                            decoration:
+                                const InputDecoration(hintText: "GIF Title"),
                           ),
                         ),
                         SizedBox(
@@ -73,7 +74,7 @@ class UplaodFile extends StatelessWidget {
                             onPressed: () async {
                               await provider.uploadGif();
                             },
-                            child: Icon(Icons.upload_file_outlined)),
+                            child: const Icon(Icons.upload_file_outlined)),
                       ]),
                 ),
               )),
