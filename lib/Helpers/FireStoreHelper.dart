@@ -58,8 +58,10 @@ class FireStoreHelper {
     List<AppGif> gifs = [];
     queryDocumentSnapshot.forEach(
       (element) {
-        print(element.data());
-        gifs.add(AppGif.fromFirebaseJson(element.data()));
+        AppGif gif = AppGif.fromFirebaseJson(element.data());
+        gif.id = element.id;
+        log(" element id ${element.id}");
+        gifs.add(gif);
       },
     );
     print(gifs);
@@ -73,5 +75,16 @@ class FireStoreHelper {
     TaskSnapshot uploadTask = await reference.putFile(file);
     String imageUrl = await reference.getDownloadURL();
     return imageUrl;
+  }
+
+  deleteGif(gifId, userId) async {
+    log(" gif id $gifId");
+    log(" user id $userId");
+    await FirebaseFirestore.instance
+        .collection('user')
+        .doc(userId)
+        .collection('gifs')
+        .doc(gifId)
+        .delete();
   }
 }

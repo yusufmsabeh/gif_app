@@ -83,6 +83,7 @@ flutter:
     - assets/label.png
     - assets/fileupload.png
     - assets/gif.png
+    - assets/delete.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

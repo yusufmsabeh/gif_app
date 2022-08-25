@@ -91,7 +91,8 @@ class FireStoreProvider extends ChangeNotifier {
             title: gifTitle.text,
             url: fileUrl,
             appUser: AppUserGif(avatarUrl: '', userName: appUser!.username),
-            rating: 'me');
+            rating: 'me',
+            isMyGif: true);
         await FireStoreHelper.instance.uploadGif(appGif, appUser!.id!);
         changeLoadingState();
         gifTitle.clear();
@@ -114,6 +115,14 @@ class FireStoreProvider extends ChangeNotifier {
   getMyGifs() async {
     MyGif = await FireStoreHelper.instance.getMyGif(appUser!.id!);
     notifyListeners();
+  }
+
+  deleteGif(String gifId) async {
+    changeLoadingState();
+    await FireStoreHelper.instance.deleteGif(gifId, appUser!.id);
+    getMyGifs();
+    changeLoadingState();
+    AppRouter.popWidget();
   }
 
   emptyValidation(String? value) {

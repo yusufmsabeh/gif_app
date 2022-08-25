@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/rendering.dart';
 import 'package:gif_app/Model/AppUserGif.dart';
 
 class AppGif {
@@ -8,18 +9,21 @@ class AppGif {
   String? url;
   String? rating;
   AppUserGif? appUser;
+  bool? isMyGif;
   AppGif(
       {required this.id,
       required this.title,
       required this.url,
       required this.appUser,
-      required this.rating});
+      required this.rating,
+      required this.isMyGif});
   AppGif.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
     rating = json['rating'];
     url = json['images']['fixed_height_downsampled']['url'];
     appUser = AppUserGif.fromJson(json['user']);
+    isMyGif = false;
   }
   AppGif.fromFirebaseJson(Map<String, dynamic> json) {
     id = json['id'] ?? '1';
@@ -27,6 +31,7 @@ class AppGif {
     rating = json['rating'] ?? 'me';
     url = json['url'] ?? 'no url';
     appUser = AppUserGif.fromFirebaseJson(json['user']);
+    isMyGif = true;
   }
 
   toMap() => {

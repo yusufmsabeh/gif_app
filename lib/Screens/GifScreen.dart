@@ -19,8 +19,14 @@ class GifScreen extends StatelessWidget {
           centerTitle: true,
           title: const Text("GIF"),
           actions: [
-            appGif.id == ''
-                ? const SizedBox()
+            appGif.isMyGif
+                ? IconButton(
+                    onPressed: () => FireStoreprovider.deleteGif(appGif.id),
+                    icon: Image.asset(
+                      'assets/delete.png',
+                      width: 25.w,
+                      height: 25.h,
+                    ))
                 : IconButton(
                     onPressed: () =>
                         FireStoreprovider.addOrDeleteFavorites(appGif.id),
