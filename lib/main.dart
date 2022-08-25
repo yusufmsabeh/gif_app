@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Map<int, Color> color = {
+    Map<int, Color> color = const {
       50: Color.fromRGBO(167, 201, 87, .1),
       100: Color.fromRGBO(167, 201, 87, .2),
       200: Color.fromRGBO(167, 201, 87, .3),
