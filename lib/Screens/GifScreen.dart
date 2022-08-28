@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gif_app/Providers/DioProvider.dart';
@@ -17,7 +18,7 @@ class GifScreen extends StatelessWidget {
       return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text("GIF"),
+          title: Text("GIF".tr()),
           actions: [
             appGif.isMyGif
                 ? IconButton(
@@ -67,7 +68,7 @@ class GifScreen extends StatelessWidget {
                           SizedBox(
                             width: double.infinity,
                             child: Text(
-                              "Title:",
+                              "Title".tr() + ":",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20.sp,
@@ -137,10 +138,10 @@ class GifScreen extends StatelessWidget {
                                 onPressed: () =>
                                     Dioprovider.DownLoadImageAndSahre(appGif),
                                 child: Row(
-                                  children: const [
-                                    Text("Share"),
-                                    Spacer(),
-                                    Icon(Icons.send_rounded),
+                                  children: [
+                                    Text("Share".tr()),
+                                    const Spacer(),
+                                    const Icon(Icons.send_rounded),
                                   ],
                                 )),
                           ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -25,20 +26,19 @@ class SignInForm extends StatelessWidget {
                   SizedBox(
                       width: double.infinity,
                       child: Text(
-                        "Welcome back",
+                        "WelcomeBack".tr(),
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 25.sp),
                       )),
                   SizedBox(
                     height: 10.h,
                   ),
-                  const SizedBox(
-                      width: double.infinity,
-                      child: Text("Sign in with your account")),
+                  SizedBox(
+                      width: double.infinity, child: Text("SignInDes".tr())),
                   SizedBox(
                     height: 30.h,
                   ),
-                  const SizedBox(width: double.infinity, child: Text("Email")),
+                  SizedBox(width: double.infinity, child: Text("Email".tr())),
                   TextFormField(
                     validator: (value) => Methodprovider.emailValidate(value),
                     keyboardType: TextInputType.emailAddress,
@@ -47,8 +47,8 @@ class SignInForm extends StatelessWidget {
                   SizedBox(
                     height: 15.h,
                   ),
-                  const SizedBox(
-                      width: double.infinity, child: Text("Password")),
+                  SizedBox(
+                      width: double.infinity, child: Text("Password".tr())),
                   TextFormField(
                     validator: (value) =>
                         Methodprovider.passwordValidate(value),
@@ -70,7 +70,7 @@ class SignInForm extends StatelessWidget {
                         child: Align(
                             alignment: Alignment.center,
                             child: Text(
-                              "Login",
+                              "LoginButton".tr(),
                               style: TextStyle(
                                   fontSize: 20.sp,
                                   fontWeight: FontWeight.bold,
@@ -78,12 +78,12 @@ class SignInForm extends StatelessWidget {
                             ))),
                   ),
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    const Text('Forgot your password?'),
+                    Text('ForgotPassword'.tr()),
                     TextButton(
                         onPressed: () => showDialog(
                             context: context,
                             builder: (context) => const ResetPasswordDialog()),
-                        child: const Text("Reset here"))
+                        child: Text("Reset".tr()))
                   ])
                 ],
               )),

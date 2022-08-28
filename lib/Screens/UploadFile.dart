@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -15,7 +16,7 @@ class UplaodFile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Upload GIF'),
+        title: Text('UploadGif'.tr()),
         centerTitle: true,
       ),
       body: Consumer<FireStoreProvider>(builder: (context, provider, x) {
@@ -60,7 +61,7 @@ class UplaodFile extends StatelessWidget {
                                 provider.emptyValidation(value),
                             controller: provider.gifTitle,
                             decoration:
-                                const InputDecoration(hintText: "GIF Title"),
+                                InputDecoration(hintText: "GifTitle".tr()),
                           ),
                         ),
                         SizedBox(

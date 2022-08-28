@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gif_app/Providers/AuthProvider.dart';
@@ -71,7 +72,7 @@ class SignupSigninScreen extends StatelessWidget {
                                     UIprovder.changeSigInUpPage(0);
                                   },
                                   child: Text(
-                                    "LOGIN",
+                                    "login".tr(),
                                     style: TextStyle(
                                         color: UIprovder.SignInUpIndex == 0
                                             ? Colors.white
@@ -86,7 +87,7 @@ class SignupSigninScreen extends StatelessWidget {
                                     UIprovder.changeSigInUpPage(1);
                                   },
                                   child: Text(
-                                    "SIGN UP",
+                                    "signup".tr(),
                                     style: TextStyle(
                                         color: UIprovder.SignInUpIndex == 1
                                             ? Colors.white

@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -81,7 +82,7 @@ class FireStoreProvider extends ChangeNotifier {
   uploadGif() async {
     if (selectedImage == null) {
       ScaffoldMessenger.of(AppRouter.navKey.currentContext!)
-          .showSnackBar(SnackBar(content: Text("You must pick a file first")));
+          .showSnackBar(SnackBar(content: Text("PickFile".tr())));
     } else {
       if (uploadGifKey.currentState!.validate()) {
         changeLoadingState();
@@ -126,6 +127,6 @@ class FireStoreProvider extends ChangeNotifier {
   }
 
   emptyValidation(String? value) {
-    if (value == null || value.length == 0) return 'this valid is required';
+    if (value == null || value.length == 0) return 'Required'.tr();
   }
 }

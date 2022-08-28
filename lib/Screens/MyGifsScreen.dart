@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:gif_app/Providers/AuthProvider.dart';
 import 'package:gif_app/Providers/DioProvider.dart';
 import 'package:gif_app/Providers/FireStoreProvider.dart';
@@ -18,7 +20,7 @@ class MyGifsScreen extends StatelessWidget {
         builder: (context, Dioprovider, UIprovider, Authprovider, x) {
       return Scaffold(
           appBar: AppBar(
-            title: const Text("My Gifs"),
+            title: Text("MyGif".tr()),
             centerTitle: true,
           ),
           body: Consumer<FireStoreProvider>(
@@ -26,20 +28,17 @@ class MyGifsScreen extends StatelessWidget {
             return Stack(
               children: [
                 Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 13.w, vertical: 10.h),
-                  child: FireStoreprovider.MyGif.isEmpty
-                      ? const EmptyScreen()
-                      : GridView.builder(
-                          gridDelegate:
-                              SliverGridDelegateWithMaxCrossAxisExtent(
-                                  maxCrossAxisExtent: 200.h,
-                                  crossAxisSpacing: 14.w,
-                                  mainAxisSpacing: 14.h),
-                          itemCount: FireStoreprovider.MyGif.length,
-                          itemBuilder: (context, index) => GifWidget(
-                              appGif: FireStoreprovider.MyGif[index])),
-                ),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 13.w, vertical: 10.h),
+                    child: FireStoreprovider.MyGif.isEmpty
+                        ? const EmptyScreen()
+                        : MasonryGridView.count(
+                            itemCount: FireStoreprovider.MyGif.length,
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 4,
+                            crossAxisSpacing: 4,
+                            itemBuilder: (context, index) => GifWidget(
+                                appGif: FireStoreprovider.MyGif[index]))),
                 FireStoreprovider.isLoading
                     ? const Center(
                         child: LoadingSpinner(),

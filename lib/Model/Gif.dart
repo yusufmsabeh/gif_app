@@ -10,6 +10,7 @@ class AppGif {
   String? rating;
   AppUserGif? appUser;
   bool? isMyGif;
+
   AppGif(
       {required this.id,
       required this.title,

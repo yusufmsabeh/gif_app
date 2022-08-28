@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,6 +19,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await EasyLocalization.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -49,21 +51,29 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<UIProvider>(create: (context) => UIProvider()),
         Provider(create: (context) => MethodProvider())
       ],
-      child: ScreenUtilInit(
-          designSize: const Size(360, 690),
-          minTextAdapt: true,
-          splitScreenMode: true,
-          builder: (context, child) {
-            return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              navigatorKey: AppRouter.navKey,
-              theme: ThemeData(
-                  colorScheme:
-                      ColorScheme.fromSwatch(primarySwatch: colorCustom)),
-              home:
-                  Provider.of<UIProvider>(context).HomePageController(context),
-            );
-          }),
+      child: EasyLocalization(
+        supportedLocales: [Locale('en'), Locale('ar')],
+        path: 'assets/lans',
+        fallbackLocale: Locale('en'),
+        child: ScreenUtilInit(
+            designSize: const Size(360, 690),
+            minTextAdapt: true,
+            splitScreenMode: true,
+            builder: (context, child) {
+              return MaterialApp(
+                localizationsDelegates: context.localizationDelegates,
+                supportedLocales: context.supportedLocales,
+                locale: context.locale,
+                debugShowCheckedModeBanner: false,
+                navigatorKey: AppRouter.navKey,
+                theme: ThemeData(
+                    colorScheme:
+                        ColorScheme.fromSwatch(primarySwatch: colorCustom)),
+                home: Provider.of<UIProvider>(context)
+                    .HomePageController(context),
+              );
+            }),
+      ),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gif_app/AppRouter/AppRouter.dart';
@@ -59,7 +60,7 @@ class DrawerScreen extends StatelessWidget {
               color: Color.fromARGB(255, 188, 71, 73),
             ),
             title: Text(
-              'Favorites',
+              'Favorites'.tr(),
               style: TextStyle(
                   color: const Color.fromARGB(255, 242, 232, 207),
                   fontFamily: "Rubik",
@@ -78,7 +79,7 @@ class DrawerScreen extends StatelessWidget {
               height: 25.h,
             ),
             title: Text(
-              'My GIF',
+              'MyGif'.tr(),
               style: TextStyle(
                   color: const Color.fromARGB(255, 242, 232, 207),
                   fontFamily: "Rubik",
@@ -100,7 +101,7 @@ class DrawerScreen extends StatelessWidget {
               height: 25.h,
             ),
             title: Text(
-              'Dogs',
+              'Dogs'.tr(),
               style: TextStyle(
                   color: const Color.fromARGB(255, 242, 232, 207),
                   fontFamily: "Rubik",
@@ -119,7 +120,7 @@ class DrawerScreen extends StatelessWidget {
               height: 25.h,
             ),
             title: Text(
-              'Cats',
+              'Cats'.tr(),
               style: TextStyle(
                   color: const Color.fromARGB(255, 242, 232, 207),
                   fontFamily: "Rubik",
@@ -138,7 +139,7 @@ class DrawerScreen extends StatelessWidget {
               height: 25.h,
             ),
             title: Text(
-              'Funny',
+              'Funny'.tr(),
               style: TextStyle(
                   color: const Color.fromARGB(255, 242, 232, 207),
                   fontFamily: "Rubik",
@@ -157,7 +158,7 @@ class DrawerScreen extends StatelessWidget {
               height: 25.h,
             ),
             title: Text(
-              'Meme',
+              'Meme'.tr(),
               style: TextStyle(
                   color: const Color.fromARGB(255, 242, 232, 207),
                   fontFamily: "Rubik",
@@ -176,7 +177,7 @@ class DrawerScreen extends StatelessWidget {
               height: 25.h,
             ),
             title: Text(
-              'Cars',
+              'Cars'.tr(),
               style: TextStyle(
                   color: const Color.fromARGB(255, 242, 232, 207),
                   fontFamily: "Rubik",
@@ -195,7 +196,7 @@ class DrawerScreen extends StatelessWidget {
               height: 25.h,
             ),
             title: Text(
-              'Sign Out',
+              'SignOut'.tr(),
               style: TextStyle(
                   color: Colors.red,
                   fontFamily: "Rubik",

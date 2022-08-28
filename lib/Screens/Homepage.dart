@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gif_app/AppRouter/AppRouter.dart';
@@ -23,7 +24,9 @@ class HomePage extends StatelessWidget {
               AppRouter.pushWidget(const UplaodFile());
             }),
             child: Container(
-              margin: EdgeInsets.only(right: 102.w),
+              margin: context.locale.toString() == 'ar'
+                  ? EdgeInsets.only(left: 100.w)
+                  : EdgeInsets.only(right: 102.w),
               height: 35.h,
               padding: EdgeInsets.symmetric(horizontal: 15.w),
               decoration: BoxDecoration(
@@ -46,10 +49,10 @@ class HomePage extends StatelessWidget {
                       width: 25.w,
                       height: 25.h,
                     ),
-                    const TextButton(
+                    TextButton(
                       onPressed: null,
                       child: Text(
-                        "UPLOAD",
+                        "Upload".tr(),
                         style: TextStyle(
                             color: Color(0xFF4CAF50),
                             fontWeight: FontWeight.bold),
@@ -93,6 +96,15 @@ class HomePage extends StatelessWidget {
                     label: "Stickers")
               ]),
           appBar: AppBar(
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    context.locale.toString() == 'ar'
+                        ? context.setLocale(const Locale('en'))
+                        : context.setLocale(const Locale('ar'));
+                  },
+                  icon: Icon(Icons.language))
+            ],
             title: Container(
               margin: EdgeInsets.only(top: 5.h),
               width: 267.w,
@@ -121,7 +133,7 @@ class HomePage extends StatelessWidget {
                             width: 1,
                             color: Color.fromARGB(255, 201, 201, 201))),
                     prefixIcon: const Icon(Icons.search),
-                    hintText: 'Search'),
+                    hintText: 'Search'.tr()),
               ),
             ),
             centerTitle: true,

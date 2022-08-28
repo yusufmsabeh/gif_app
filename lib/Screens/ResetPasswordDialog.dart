@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gif_app/Providers/AuthProvider.dart';
@@ -26,7 +27,7 @@ class ResetPasswordDialog extends StatelessWidget {
                   height: 20.h,
                 ),
                 Text(
-                  "Reset Password",
+                  "ResetPassword".tr(),
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 25.sp,
@@ -38,7 +39,7 @@ class ResetPasswordDialog extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "Email",
+                      "Email".tr(),
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 15.sp,
@@ -77,10 +78,10 @@ class ResetPasswordDialog extends StatelessWidget {
                       onPressed: () => Authprovider.ResetPassword(),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text("Send email"),
-                          Spacer(),
-                          Icon(Icons.send_outlined)
+                        children: [
+                          Text("SendEmail".tr()),
+                          const Spacer(),
+                          const Icon(Icons.send_outlined)
                         ],
                       )),
                 )

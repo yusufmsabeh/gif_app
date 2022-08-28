@@ -16,6 +16,18 @@ class GifWidget extends StatelessWidget {
         onTap: () {
           AppRouter.pushWidget(GifScreen(appGif: appGif));
         },
-        child: Image.network(appGif.url ?? 'no url'));
+        child: Container(
+          decoration: BoxDecoration(
+              color: Color.fromRGBO(106, 153, 78, 1),
+              image: DecorationImage(
+                  image: NetworkImage(
+                    appGif.url ?? 'no url',
+                  ),
+                  fit: BoxFit.cover)),
+          child: Image.network(
+            appGif.url ?? 'no url',
+            fit: BoxFit.cover,
+          ),
+        ));
   }
 }

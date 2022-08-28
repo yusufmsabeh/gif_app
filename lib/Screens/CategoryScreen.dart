@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:gif_app/Providers/DioProvider.dart';
 import 'package:gif_app/Screens/EmptyScreen.dart';
 import 'package:gif_app/Screens/LoadingSpinner.dart';
@@ -15,7 +17,7 @@ class CategoryScreen extends StatelessWidget {
     return Consumer<DioProvider>(builder: (context, provider, x) {
       return Scaffold(
           appBar: AppBar(
-            title: Text(Title),
+            title: Text(Title.tr()),
             centerTitle: true,
           ),
           body: Stack(
@@ -24,12 +26,11 @@ class CategoryScreen extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 13.w, vertical: 10.h),
                 child: provider.categoryList.isEmpty
                     ? const EmptyScreen()
-                    : GridView.builder(
-                        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                            maxCrossAxisExtent: 200.h,
-                            crossAxisSpacing: 14.w,
-                            mainAxisSpacing: 14.h),
+                    : MasonryGridView.count(
                         itemCount: provider.categoryList.length,
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 4,
+                        crossAxisSpacing: 4,
                         itemBuilder: (context, index) =>
                             GifWidget(appGif: provider.categoryList[index])),
               ),
