@@ -24,9 +24,10 @@ class HomePage extends StatelessWidget {
               AppRouter.pushWidget(const UplaodFile());
             }),
             child: Container(
-              margin: context.locale.toString() == 'ar'
-                  ? EdgeInsets.only(left: 100.w)
-                  : EdgeInsets.only(right: 102.w),
+              margin: const EdgeInsets.symmetric(horizontal: 100),
+              // margin: context.locale.toString() == 'ar'
+              //     ? EdgeInsets.only(left: 100.w)
+              //     : EdgeInsets.only(right: 102.w),
               height: 35.h,
               padding: EdgeInsets.symmetric(horizontal: 15.w),
               decoration: BoxDecoration(
@@ -53,7 +54,7 @@ class HomePage extends StatelessWidget {
                       onPressed: null,
                       child: Text(
                         "Upload".tr(),
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Color(0xFF4CAF50),
                             fontWeight: FontWeight.bold),
                       ),

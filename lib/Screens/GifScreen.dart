@@ -47,7 +47,7 @@ class GifScreen extends StatelessWidget {
                 SizedBox(
                     height: 300.h,
                     child: Image.network(
-                      appGif.url ?? '',
+                      appGif.originalUrl ?? '',
                       fit: BoxFit.fill,
                     )),
                 SizedBox(

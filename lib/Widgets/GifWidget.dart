@@ -18,14 +18,15 @@ class GifWidget extends StatelessWidget {
         },
         child: Container(
           decoration: BoxDecoration(
-              color: Color.fromRGBO(106, 153, 78, 1),
-              image: DecorationImage(
-                  image: NetworkImage(
-                    appGif.url ?? 'no url',
-                  ),
-                  fit: BoxFit.cover)),
+            color: Color.fromRGBO(106, 153, 78, 1),
+            // image: DecorationImage(
+            //     image: NetworkImage(
+            //       appGif.fixedUrl ?? 'no url',
+            //     ),
+            //     fit: BoxFit.cover)
+          ),
           child: Image.network(
-            appGif.url ?? 'no url',
+            appGif.fixedUrl ?? 'no url',
             fit: BoxFit.cover,
           ),
         ));

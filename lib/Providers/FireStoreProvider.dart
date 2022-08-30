@@ -90,7 +90,8 @@ class FireStoreProvider extends ChangeNotifier {
         AppGif appGif = AppGif(
             id: '',
             title: gifTitle.text,
-            url: fileUrl,
+            fixedUrl: fileUrl,
+            originalUrl: fileUrl,
             appUser: AppUserGif(avatarUrl: '', userName: appUser!.username),
             rating: 'me',
             isMyGif: true);

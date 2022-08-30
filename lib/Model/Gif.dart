@@ -6,7 +6,8 @@ import 'package:gif_app/Model/AppUserGif.dart';
 class AppGif {
   String? id;
   String? title;
-  String? url;
+  String? fixedUrl;
+  String? originalUrl;
   String? rating;
   AppUserGif? appUser;
   bool? isMyGif;
@@ -14,15 +15,17 @@ class AppGif {
   AppGif(
       {required this.id,
       required this.title,
-      required this.url,
+      required this.fixedUrl,
       required this.appUser,
       required this.rating,
-      required this.isMyGif});
+      required this.isMyGif,
+      required this.originalUrl});
   AppGif.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
     rating = json['rating'];
-    url = json['images']['fixed_height_downsampled']['url'];
+    fixedUrl = json['images']['fixed_height_downsampled']['url'];
+    originalUrl = json['images']['original']['url'];
     appUser = AppUserGif.fromJson(json['user']);
     isMyGif = false;
   }
@@ -30,7 +33,8 @@ class AppGif {
     id = json['id'] ?? '1';
     title = json['title'] ?? 'no title';
     rating = json['rating'] ?? 'me';
-    url = json['url'] ?? 'no url';
+    fixedUrl = json['url'] ?? 'no url';
+
     appUser = AppUserGif.fromFirebaseJson(json['user']);
     isMyGif = true;
   }
@@ -38,7 +42,8 @@ class AppGif {
   toMap() => {
         'id': id,
         'title': title,
-        "url": url,
+        "fixedUrl": fixedUrl,
+        "originalUrl": originalUrl,
         'rating': 'Me',
         'user': appUser!.toJson()
       };
