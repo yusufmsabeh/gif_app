@@ -10,23 +10,26 @@ class AppGif {
   String? originalUrl;
   String? rating;
   AppUserGif? appUser;
+
   bool? isMyGif;
 
-  AppGif(
-      {required this.id,
-      required this.title,
-      required this.fixedUrl,
-      required this.appUser,
-      required this.rating,
-      required this.isMyGif,
-      required this.originalUrl});
+  AppGif({
+    required this.id,
+    required this.title,
+    required this.fixedUrl,
+    required this.appUser,
+    required this.rating,
+    required this.isMyGif,
+    required this.originalUrl,
+  });
   AppGif.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
     rating = json['rating'];
-    fixedUrl = json['images']['fixed_height_downsampled']['url'];
+    fixedUrl = json['images']['downsized_still']['url'];
     originalUrl = json['images']['original']['url'];
     appUser = AppUserGif.fromJson(json['user']);
+
     isMyGif = false;
   }
   AppGif.fromFirebaseJson(Map<String, dynamic> json) {

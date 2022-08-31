@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:gif_app/AppRouter/AppRouter.dart';
 import 'package:gif_app/Model/Gif.dart';
 
 import 'package:gif_app/Screens/GifScreen.dart';
-import 'package:gif_app/Screens/LoadingSpinner.dart';
 
 // ignore: must_be_immutable
 class GifWidget extends StatelessWidget {
@@ -19,25 +19,20 @@ class GifWidget extends StatelessWidget {
           AppRouter.pushWidget(GifScreen(appGif: appGif));
         },
         child: Container(
-          decoration: const BoxDecoration(
-            color: Color.fromRGBO(106, 153, 78, 1),
-            // image: DecorationImage(
-            //     image: NetworkImage(
-            //       appGif.fixedUrl ?? 'no url',
-            //     ),
-            //     fit: BoxFit.cover)
-          ),
+          color: const Color.fromRGBO(106, 153, 78, 1),
           child: CachedNetworkImage(
+            fit: BoxFit.cover,
             imageUrl: appGif.fixedUrl ?? "NO url",
-            placeholder: (context, url) => Center(
-                child: CircularProgressIndicator(
-              color: Colors.white,
-            )),
+            placeholder: (context, url) => SizedBox(
+              height: 100.h,
+              width: 100.w,
+              child: const Center(
+                  child: CircularProgressIndicator(
+                color: Colors.white,
+              )),
+            ),
+            errorWidget: (context, url, error) => Icon(Icons.error),
           ),
-          // child: Image.network(
-          //   appGif.fixedUrl ?? 'no url',
-          //   fit: BoxFit.cover,
-          // ),
         ));
   }
 }

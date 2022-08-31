@@ -88,7 +88,7 @@ class DioProvider extends ChangeNotifier {
     Provider.of<FireStoreProvider>(AppRouter.navKey.currentContext!,
             listen: false)
         .changeLoadingState();
-    final uri = Uri.parse(appGif.fixedUrl ?? '');
+    final uri = Uri.parse(appGif.originalUrl ?? '');
     final response = await http.get(uri);
     final bytes = response.bodyBytes;
 
