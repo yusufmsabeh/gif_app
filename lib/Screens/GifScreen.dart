@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,11 +46,19 @@ class GifScreen extends StatelessWidget {
                   height: 20.h,
                 ),
                 SizedBox(
-                    height: 300.h,
-                    child: Image.network(
-                      appGif.originalUrl ?? '',
-                      fit: BoxFit.fill,
-                    )),
+                  height: 300.h,
+                  child: CachedNetworkImage(
+                    imageUrl: appGif.originalUrl,
+                    placeholder: (context, url) => Container(
+                        color: Colors.grey.withOpacity(.5),
+                        child: Center(child: LoadingSpinner())),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                  ),
+                  // child: Image.network(
+                  //   appGif.originalUrl ?? '',
+                  //   fit: BoxFit.fill,
+                  // )
+                ),
                 SizedBox(
                   height: 20.h,
                 ),

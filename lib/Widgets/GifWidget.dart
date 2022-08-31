@@ -1,9 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:gif_app/AppRouter/AppRouter.dart';
 import 'package:gif_app/Model/Gif.dart';
 
 import 'package:gif_app/Screens/GifScreen.dart';
+import 'package:gif_app/Screens/LoadingSpinner.dart';
 
 // ignore: must_be_immutable
 class GifWidget extends StatelessWidget {
@@ -17,7 +19,7 @@ class GifWidget extends StatelessWidget {
           AppRouter.pushWidget(GifScreen(appGif: appGif));
         },
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Color.fromRGBO(106, 153, 78, 1),
             // image: DecorationImage(
             //     image: NetworkImage(
@@ -25,10 +27,17 @@ class GifWidget extends StatelessWidget {
             //     ),
             //     fit: BoxFit.cover)
           ),
-          child: Image.network(
-            appGif.fixedUrl ?? 'no url',
-            fit: BoxFit.cover,
+          child: CachedNetworkImage(
+            imageUrl: appGif.fixedUrl ?? "NO url",
+            placeholder: (context, url) => Center(
+                child: CircularProgressIndicator(
+              color: Colors.white,
+            )),
           ),
+          // child: Image.network(
+          //   appGif.fixedUrl ?? 'no url',
+          //   fit: BoxFit.cover,
+          // ),
         ));
   }
 }
