@@ -19,7 +19,15 @@ class GifWidget extends StatelessWidget {
           AppRouter.pushWidget(GifScreen(appGif: appGif));
         },
         child: Container(
-          color: const Color.fromRGBO(106, 153, 78, 1),
+          decoration: appGif.type == 'gif'
+              ? const BoxDecoration(
+                  color: const Color.fromRGBO(106, 153, 78, 1),
+                )
+              : const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/transparent.jpg'),
+                      fit: BoxFit.cover)),
+          //
           child: CachedNetworkImage(
             fit: BoxFit.cover,
             imageUrl: appGif.fixedUrl ?? "NO url",
@@ -31,7 +39,6 @@ class GifWidget extends StatelessWidget {
                 color: Colors.white,
               )),
             ),
-            errorWidget: (context, url, error) => Icon(Icons.error),
           ),
         ));
   }

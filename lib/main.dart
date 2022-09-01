@@ -7,8 +7,7 @@ import 'package:gif_app/Providers/AuthProvider.dart';
 import 'package:gif_app/Providers/FireStoreProvider.dart';
 import 'package:gif_app/Providers/MethodsProvider.dart';
 import 'package:gif_app/Providers/UIProvider.dart';
-import 'package:gif_app/Screens/Homepage.dart';
-import 'package:gif_app/Screens/SignupSigninScreen.dart';
+
 import 'package:provider/provider.dart';
 
 import 'Providers/DioProvider.dart';
@@ -52,9 +51,9 @@ class MyApp extends StatelessWidget {
         Provider(create: (context) => MethodProvider())
       ],
       child: EasyLocalization(
-        supportedLocales: [Locale('en'), Locale('ar')],
+        supportedLocales: const [Locale('en'), Locale('ar')],
         path: 'assets/lans',
-        fallbackLocale: Locale('en'),
+        fallbackLocale: const Locale('en'),
         child: ScreenUtilInit(
             designSize: const Size(360, 690),
             minTextAdapt: true,

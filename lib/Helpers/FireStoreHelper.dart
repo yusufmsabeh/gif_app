@@ -60,7 +60,7 @@ class FireStoreHelper {
       (element) {
         AppGif gif = AppGif.fromFirebaseJson(element.data());
         gif.id = element.id;
-        log(" element id ${element.id}");
+
         gifs.add(gif);
       },
     );
@@ -78,8 +78,6 @@ class FireStoreHelper {
   }
 
   deleteGif(gifId, userId) async {
-    log(" gif id $gifId");
-    log(" user id $userId");
     await FirebaseFirestore.instance
         .collection('user')
         .doc(userId)

@@ -7,6 +7,7 @@ import 'package:gif_app/Providers/FireStoreProvider.dart';
 import 'package:gif_app/Providers/MethodsProvider.dart';
 import 'package:gif_app/Screens/LoadingSpinner.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/services.dart';
 
 class GifScreen extends StatelessWidget {
   var appGif;
@@ -48,6 +49,7 @@ class GifScreen extends StatelessWidget {
                 SizedBox(
                   height: 300.h,
                   child: CachedNetworkImage(
+                    fit: BoxFit.fill,
                     imageUrl: appGif.originalUrl,
                     placeholder: (context, url) => Container(
                         color: Colors.grey.withOpacity(.5),
@@ -136,23 +138,44 @@ class GifScreen extends StatelessWidget {
                           SizedBox(
                             height: 10.h,
                           ),
-                          SizedBox(
-                            width: 100.w,
-                            child: ElevatedButton(
-                                style: ButtonStyle(
-                                    backgroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            const Color.fromARGB(
-                                                255, 188, 71, 73))),
-                                onPressed: () =>
-                                    Dioprovider.DownLoadImageAndSahre(appGif),
-                                child: Row(
-                                  children: [
-                                    Text("Share".tr()),
-                                    const Spacer(),
-                                    const Icon(Icons.send_rounded),
-                                  ],
-                                )),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: 100.w,
+                                child: ElevatedButton(
+                                    style: ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStateProperty.all<Color>(
+                                                const Color.fromARGB(
+                                                    255, 188, 71, 73))),
+                                    onPressed: () =>
+                                        Dioprovider.DownLoadImageAndSahre(
+                                            appGif),
+                                    child: Row(
+                                      children: [
+                                        Text("Share".tr()),
+                                        const Spacer(),
+                                        const Icon(Icons.send_rounded),
+                                      ],
+                                    )),
+                              ),
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                              SizedBox(
+                                width: 50.w,
+                                child: ElevatedButton(
+                                    style: ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStateProperty.all<Color>(
+                                                const Color.fromARGB(
+                                                    255, 188, 71, 73))),
+                                    onPressed: () => Methodprovider.copyText(
+                                        appGif.originalUrl),
+                                    child: Icon(Icons.copy)),
+                              ),
+                            ],
                           ),
                         ],
                       ),

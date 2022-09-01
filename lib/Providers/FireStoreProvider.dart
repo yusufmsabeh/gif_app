@@ -88,6 +88,7 @@ class FireStoreProvider extends ChangeNotifier {
         changeLoadingState();
         String fileUrl = await uplaodFile();
         AppGif appGif = AppGif(
+            type: 'gif',
             id: '',
             title: gifTitle.text,
             fixedUrl: fileUrl,

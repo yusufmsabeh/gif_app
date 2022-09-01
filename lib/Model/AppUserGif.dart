@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 class AppUserGif {
   String? userName;
   String? avatarUrl;
