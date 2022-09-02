@@ -121,6 +121,8 @@ class HomePage extends StatelessWidget {
                 decoration: InputDecoration(
                     isDense: true,
                     suffix: Container(
+                      width: 20.w,
+                      height: 20.h,
                       margin: EdgeInsets.only(top: 15.h),
                       child: InkWell(
                           onTap: () {
@@ -130,6 +132,9 @@ class HomePage extends StatelessWidget {
                           },
                           child: const Text(
                             'X',
+                            style: TextStyle(
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold),
                           )),
                     ),
                     fillColor: Colors.white,
