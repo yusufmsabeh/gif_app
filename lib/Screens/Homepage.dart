@@ -115,7 +115,9 @@ class HomePage extends StatelessWidget {
                 controller: Dioprovider.searchBarController,
                 onFieldSubmitted: (value) => Dioprovider.SearchFunctoin(value),
                 maxLines: 1,
-                style: TextStyle(fontSize: 14.sp),
+                style: TextStyle(
+                  fontSize: 14.sp,
+                ),
                 decoration: InputDecoration(
                     isDense: true,
                     suffix: Container(
