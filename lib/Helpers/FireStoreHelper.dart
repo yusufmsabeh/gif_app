@@ -68,9 +68,10 @@ class FireStoreHelper {
     return gifs;
   }
 
-  uplaodFile(File file) async {
+  uplaodFile(File file, String UserId) async {
     String fileName = file.path.split('/').last;
-    Reference reference = FirebaseStorage.instance.ref(fileName);
+    Reference reference =
+        FirebaseStorage.instance.ref("$UserId/gifs/$fileName");
 
     TaskSnapshot uploadTask = await reference.putFile(file);
     String imageUrl = await reference.getDownloadURL();

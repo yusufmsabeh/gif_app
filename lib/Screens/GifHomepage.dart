@@ -27,16 +27,7 @@ class GifHomepage extends StatelessWidget {
                       mainAxisSpacing: 4,
                       crossAxisSpacing: 4,
                       itemBuilder: (context, index) =>
-                          GifWidget(appGif: Dioprovider.trendingGif[index]))
-              // : GridView.builder(
-              //     gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              //         maxCrossAxisExtent: 200.h,
-              //         crossAxisSpacing: 14.w,
-              //         mainAxisSpacing: 14.h),
-              //     itemCount: Dioprovider.trendingGif.length,
-              //     itemBuilder: (context, index) =>
-              //         GifWidget(appGif: Dioprovider.trendingGif[index])),
-              ),
+                          GifWidget(appGif: Dioprovider.trendingGif[index]))),
           Dioprovider.isLoading
               ? const Center(child: LoadingSpinner())
               : const SizedBox()

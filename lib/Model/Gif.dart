@@ -38,7 +38,8 @@ class AppGif {
     id = json['id'] ?? '1';
     title = json['title'] ?? 'no title';
     rating = json['rating'] ?? 'me';
-    fixedUrl = json['url'] ?? 'no url';
+    originalUrl = json['originalUrl'] ?? 'no url';
+    fixedUrl = json['fixedUrl'];
     type = 'gif';
     appUser = AppUserGif.fromFirebaseJson(json['user']);
     isMyGif = true;

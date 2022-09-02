@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gif_app/AppRouter/AppRouter.dart';
 import 'package:gif_app/Providers/AuthProvider.dart';
@@ -108,20 +109,27 @@ class HomePage extends StatelessWidget {
             ],
             title: Container(
               margin: EdgeInsets.only(top: 5.h),
-              width: 267.w,
+              // width: 267.w,
               height: 40.h,
               child: TextFormField(
                 controller: Dioprovider.searchBarController,
                 onFieldSubmitted: (value) => Dioprovider.SearchFunctoin(value),
+                maxLines: 1,
+                style: TextStyle(fontSize: 14.sp),
                 decoration: InputDecoration(
-                    suffix: TextButton(
-                        onPressed: () {
-                          Dioprovider.EmptyController();
-                          FocusScope.of(context).requestFocus(new FocusNode());
-                        },
-                        child: Container(
-                            margin: EdgeInsets.only(left: 30.w, top: 15.h),
-                            child: const Text('X'))),
+                    isDense: true,
+                    suffix: Container(
+                      margin: EdgeInsets.only(top: 15.h),
+                      child: InkWell(
+                          onTap: () {
+                            Dioprovider.EmptyController();
+                            FocusScope.of(context)
+                                .requestFocus(new FocusNode());
+                          },
+                          child: const Text(
+                            'X',
+                          )),
+                    ),
                     fillColor: Colors.white,
                     filled: true,
                     focusedBorder: OutlineInputBorder(

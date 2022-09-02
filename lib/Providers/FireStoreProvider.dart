@@ -105,7 +105,8 @@ class FireStoreProvider extends ChangeNotifier {
   }
 
   uplaodFile() async {
-    return await FireStoreHelper.instance.uplaodFile(selectedImage!);
+    return await FireStoreHelper.instance
+        .uplaodFile(selectedImage!, appUser!.id!);
   }
 
   getImage() async {

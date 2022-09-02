@@ -142,6 +142,20 @@ class GifScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SizedBox(
+                                child: ElevatedButton(
+                                    style: ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStateProperty.all<Color>(
+                                                const Color.fromARGB(
+                                                    255, 188, 71, 73))),
+                                    onPressed: () => Methodprovider.copyText(
+                                        appGif.originalUrl),
+                                    child: Icon(Icons.copy)),
+                              ),
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                              SizedBox(
                                 width: 100.w,
                                 child: ElevatedButton(
                                     style: ButtonStyle(
@@ -164,16 +178,15 @@ class GifScreen extends StatelessWidget {
                                 width: 10.w,
                               ),
                               SizedBox(
-                                width: 50.w,
                                 child: ElevatedButton(
                                     style: ButtonStyle(
                                         backgroundColor:
                                             MaterialStateProperty.all<Color>(
                                                 const Color.fromARGB(
                                                     255, 188, 71, 73))),
-                                    onPressed: () => Methodprovider.copyText(
-                                        appGif.originalUrl),
-                                    child: Icon(Icons.copy)),
+                                    onPressed: () =>
+                                        Methodprovider.downloadFile(appGif),
+                                    child: Icon(Icons.download)),
                               ),
                             ],
                           ),
