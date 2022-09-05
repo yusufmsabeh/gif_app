@@ -20,6 +20,7 @@ class FireStoreProvider extends ChangeNotifier {
   AppUser? appUser;
   List<AppGif> favoritesGif = [];
   List<AppGif> MyGif = [];
+  List<AppGif> otherGif = [];
   bool isLoading = false;
 
   File? selectedImage;
@@ -42,6 +43,7 @@ class FireStoreProvider extends ChangeNotifier {
   }
 
   addOrDeleteFavorites(String id) {
+    log(id);
     changeLoadingState();
     if (appUser!.favorites.any((element) => element == id)) {
       appUser!.favorites.remove(id);
@@ -125,11 +127,23 @@ class FireStoreProvider extends ChangeNotifier {
     changeLoadingState();
     await FireStoreHelper.instance.deleteGif(gifId, appUser!.id);
     getMyGifs();
+    getUserGif();
     changeLoadingState();
     AppRouter.popWidget();
   }
 
   emptyValidation(String? value) {
     if (value == null || value.length == 0) return 'Required'.tr();
+  }
+
+  getUserGif() async {
+    changeLoadingState();
+
+    otherGif = await FireStoreHelper.instance.getUsersGif();
+    changeLoadingState();
+  }
+
+  getUserName() {
+    return appUser!.username;
   }
 }

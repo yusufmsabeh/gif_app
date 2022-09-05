@@ -31,5 +31,6 @@
     "PickFile": "You must pick a file first",
     "Required": "This valid is required",
     "InvalidEmail": "Invalid Email",
-    "WeekPassword": "Week Password"
+    "WeekPassword": "Week Password",
+    "OtherGif": "Users's Gifs"
 }

@@ -31,5 +31,6 @@
     "PickFile": "يجب ان تختار ملف اولا",
     "Required": "هذا الحقل مطلوب",
     "InvalidEmail": "بريد غير صالح",
-    "WeekPassword": "كلمة مرور ضعيفة"
+    "WeekPassword": "كلمة مرور ضعيفة",
+    "OtherGif": "اخرى"
 }

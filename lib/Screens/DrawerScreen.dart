@@ -8,6 +8,7 @@ import 'package:gif_app/Providers/FireStoreProvider.dart';
 import 'package:gif_app/Screens/CategoryScreen.dart';
 import 'package:gif_app/Screens/FavoritesScreen.dart';
 import 'package:gif_app/Screens/MyGifsScreen.dart';
+import 'package:gif_app/Screens/OtherGifs.dart';
 import 'package:provider/provider.dart';
 
 class DrawerScreen extends StatelessWidget {
@@ -80,6 +81,25 @@ class DrawerScreen extends StatelessWidget {
             ),
             title: Text(
               'MyGif'.tr(),
+              style: TextStyle(
+                  color: const Color.fromARGB(255, 242, 232, 207),
+                  fontFamily: "Rubik",
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13.sp),
+            ),
+          ),
+          ListTile(
+            onTap: () {
+              FireStoreprovider.getUserGif();
+              AppRouter.pushWidget(const OtherGifs());
+            },
+            leading: Image.asset(
+              "assets/gif.png",
+              width: 25.w,
+              height: 25.h,
+            ),
+            title: Text(
+              'OtherGif'.tr(),
               style: TextStyle(
                   color: const Color.fromARGB(255, 242, 232, 207),
                   fontFamily: "Rubik",

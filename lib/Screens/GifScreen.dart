@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gif_app/Model/Gif.dart';
 import 'package:gif_app/Providers/DioProvider.dart';
 import 'package:gif_app/Providers/FireStoreProvider.dart';
 import 'package:gif_app/Providers/MethodsProvider.dart';
@@ -10,7 +11,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
 
 class GifScreen extends StatelessWidget {
-  var appGif;
+  AppGif appGif;
   GifScreen({Key? key, required this.appGif}) : super(key: key);
 
   @override
@@ -22,9 +23,9 @@ class GifScreen extends StatelessWidget {
           centerTitle: true,
           title: Text("GIF".tr()),
           actions: [
-            appGif.isMyGif
+            appGif.appUser!.userName == FireStoreprovider.getUserName()
                 ? IconButton(
-                    onPressed: () => FireStoreprovider.deleteGif(appGif.id),
+                    onPressed: () => FireStoreprovider.deleteGif(appGif.id!),
                     icon: Image.asset(
                       'assets/delete.png',
                       width: 25.w,
@@ -32,8 +33,8 @@ class GifScreen extends StatelessWidget {
                     ))
                 : IconButton(
                     onPressed: () =>
-                        FireStoreprovider.addOrDeleteFavorites(appGif.id),
-                    icon: FireStoreprovider.checkFavotites(appGif.id)
+                        FireStoreprovider.addOrDeleteFavorites(appGif.id!),
+                    icon: FireStoreprovider.checkFavotites(appGif.id!)
                         ? Image.asset('assets/favorite.png')
                         : Image.asset('assets/unfavorite.png'),
                   )
@@ -50,7 +51,7 @@ class GifScreen extends StatelessWidget {
                   height: 300.h,
                   child: CachedNetworkImage(
                     fit: BoxFit.fill,
-                    imageUrl: appGif.originalUrl,
+                    imageUrl: appGif.originalUrl!,
                     placeholder: (context, url) => Container(
                         color: Colors.grey.withOpacity(.5),
                         child: Center(child: LoadingSpinner())),
@@ -149,7 +150,7 @@ class GifScreen extends StatelessWidget {
                                                 const Color.fromARGB(
                                                     255, 188, 71, 73))),
                                     onPressed: () => Methodprovider.copyText(
-                                        appGif.originalUrl),
+                                        appGif.originalUrl!),
                                     child: Icon(Icons.copy)),
                               ),
                               SizedBox(

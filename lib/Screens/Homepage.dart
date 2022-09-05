@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gif_app/AppRouter/AppRouter.dart';
 import 'package:gif_app/Providers/AuthProvider.dart';
 import 'package:gif_app/Providers/DioProvider.dart';
+import 'package:gif_app/Providers/FireStoreProvider.dart';
 import 'package:gif_app/Providers/UIProvider.dart';
 import 'package:gif_app/Screens/DrawerScreen.dart';
 import 'package:gif_app/Screens/LoadingSpinner.dart';
@@ -16,12 +17,14 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer3<DioProvider, UIProvider, AuthProvider>(
-        builder: (context, Dioprovider, UIprovider, Authprovider, x) {
+    return Consumer4<DioProvider, UIProvider, AuthProvider, FireStoreProvider>(
+        builder: (context, Dioprovider, UIprovider, Authprovider,
+            FireStoreprovider, x) {
       return Scaffold(
           floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
           floatingActionButton: GestureDetector(
-            onTap: (() {
+            onTap: (() async {
+              await FireStoreprovider.getUserGif();
               AppRouter.pushWidget(const UplaodFile());
             }),
             child: Container(

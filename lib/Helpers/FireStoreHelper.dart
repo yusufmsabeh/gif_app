@@ -86,4 +86,67 @@ class FireStoreHelper {
         .doc(gifId)
         .delete();
   }
+
+  Future<List<AppGif>> getUsersGif() async {
+    QuerySnapshot<Map<String, dynamic>> querySnapshot =
+        await FirebaseFirestore.instance.collection('user').get();
+
+    List<QueryDocumentSnapshot<Map<String, dynamic>>> queryDocumentSnapshot =
+        querySnapshot.docs;
+
+    List UserIds = [];
+    queryDocumentSnapshot.forEach((element) {
+      UserIds.add(element.id);
+    });
+
+    List<AppGif> alluserGifs = [];
+
+    for (int i = 0; i < UserIds.length; i++) {
+      QuerySnapshot<Map<String, dynamic>> querySnapshotGif =
+          await FirebaseFirestore.instance
+              .collection('user/${UserIds[i]}/gifs')
+              .get();
+      List<QueryDocumentSnapshot<Map<String, dynamic>>>
+          queryDocumentSnapshotGif = querySnapshotGif.docs;
+      for (int j = 0; j < queryDocumentSnapshotGif.length; j++) {
+        AppGif appGif =
+            AppGif.fromFirebaseJson(queryDocumentSnapshotGif[j].data());
+        appGif.id = queryDocumentSnapshotGif[j].id;
+        alluserGifs.add(appGif);
+      }
+    }
+    return alluserGifs;
+  }
+
+  // queryDocumentSnapshotGif.forEach((element) {
+  //         alluserGifs.add(AppGif.fromFirebaseJson(element.data()));
+  //       });
+  // UserIds.forEach(
+  //   (element) async {
+  //     QuerySnapshot<Map<String, dynamic>> querySnapshotGif =
+  //         await FirebaseFirestore.instance
+  //             .collection('user/$element/gifs')
+  //             .get();
+  //     List<QueryDocumentSnapshot<Map<String, dynamic>>>
+  //         queryDocumentSnapshotGif = querySnapshotGif.docs;
+  //     queryDocumentSnapshotGif.forEach((element) {
+  //       alluserGifs.add(AppGif.fromFirebaseJson(element.data()));
+  //     });
+  //   },
+  // );
+
+  // UserIds.forEach((element) async {
+  //   QuerySnapshot<Map<String, dynamic>> querySnapshotGif =
+  //       await FirebaseFirestore.instance
+  //           .collection('user')
+  //           .doc(element)
+  //           .collection('gifs')
+  //           .get();
+  //   List<QueryDocumentSnapshot<Map<String, dynamic>>>
+  //       queryDocumentSnapshotGif = querySnapshotGif.docs;
+  //   queryDocumentSnapshotGif.forEach((e) {
+  //     alluserGifs.add(AppGif.fromFirebaseJson(e.data()));
+  //   });
+  // });
+
 }

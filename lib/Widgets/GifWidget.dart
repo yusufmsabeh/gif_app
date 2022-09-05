@@ -29,6 +29,8 @@ class GifWidget extends StatelessWidget {
                       fit: BoxFit.cover)),
           //
           child: CachedNetworkImage(
+            errorWidget: (context, url, error) =>
+                SizedBox(height: 100, width: 100, child: Icon(Icons.error)),
             fit: BoxFit.cover,
             imageUrl: appGif.fixedUrl ?? "NO url",
             placeholder: (context, url) => SizedBox(
