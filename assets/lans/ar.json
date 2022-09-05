@@ -32,5 +32,6 @@
     "Required": "هذا الحقل مطلوب",
     "InvalidEmail": "بريد غير صالح",
     "WeekPassword": "كلمة مرور ضعيفة",
-    "OtherGif": "اخرى"
+    "OtherGif": "اخرى",
+    "ExtensionError": "فقط يسمح بملفات من نوع .gif"
 }

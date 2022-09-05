@@ -32,5 +32,6 @@
     "Required": "This valid is required",
     "InvalidEmail": "Invalid Email",
     "WeekPassword": "Week Password",
-    "OtherGif": "Users's Gifs"
+    "OtherGif": "Users's Gifs",
+    "ExtensionError": "Only .gif allowed"
 }

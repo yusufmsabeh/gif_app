@@ -62,11 +62,19 @@ class FireStoreProvider extends ChangeNotifier {
 
   fillFavoritesGif() async {
     changeLoadingState();
+    favoritesGif.clear();
+    List ApiGif =
+        appUser!.favorites.where((element) => !element.contains('-')).toList();
+    List FireStoreGif =
+        appUser!.favorites.where((element) => element.contains('-')).toList();
 
-    favoritesGif = await Provider.of<DioProvider>(
+    favoritesGif.addAll(await Provider.of<DioProvider>(
             AppRouter.navKey.currentContext!,
             listen: false)
-        .getGifByIds(appUser!.favorites);
+        .getGifByIds(ApiGif));
+
+    favoritesGif.addAll(
+        await FireStoreHelper.instance.getFavoriteFromUser(FireStoreGif));
     notifyListeners();
     changeLoadingState();
   }
@@ -83,8 +91,7 @@ class FireStoreProvider extends ChangeNotifier {
 
   uploadGif() async {
     if (selectedImage == null) {
-      ScaffoldMessenger.of(AppRouter.navKey.currentContext!)
-          .showSnackBar(SnackBar(content: Text("PickFile".tr())));
+      AppRouter.showErrorSnackBar('PickFile'.tr());
     } else {
       if (uploadGifKey.currentState!.validate()) {
         changeLoadingState();
@@ -112,10 +119,17 @@ class FireStoreProvider extends ChangeNotifier {
   }
 
   getImage() async {
-    FilePickerResult? result = await FilePicker.platform
-        .pickFiles(type: FileType.custom, allowedExtensions: ['gif']);
-    selectedImage = File(result!.files.first.path ?? '');
-    notifyListeners();
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['gif'],
+    );
+
+    if (result!.files.first.extension! == 'gif') {
+      selectedImage = File(result.files.first.path ?? '');
+      notifyListeners();
+    } else {
+      AppRouter.showErrorSnackBar('ExtensionError'.tr());
+    }
   }
 
   getMyGifs() async {

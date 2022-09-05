@@ -57,6 +57,6 @@ class AppGif {
   @override
   String toString() {
     // TODO: implement toString
-    return '--$id--';
+    return '--$id------$fixedUrl-----';
   }
 }

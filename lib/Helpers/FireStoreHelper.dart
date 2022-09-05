@@ -37,11 +37,20 @@ class FireStoreHelper {
   }
 
   uploadGif(AppGif appGif, String uid) async {
+    DocumentReference<Map<String, dynamic>> documentReference =
+        await FirebaseFirestore.instance
+            .collection('user')
+            .doc(uid)
+            .collection('gifs')
+            .add(appGif.toMap());
+
+    appGif.id = "$uid-${documentReference.id}";
     await FirebaseFirestore.instance
         .collection('user')
         .doc(uid)
         .collection('gifs')
-        .add(appGif.toMap());
+        .doc(documentReference.id)
+        .update(appGif.toMap());
   }
 
   Future<List<AppGif>> getMyGif(String uid) async {
@@ -111,42 +120,34 @@ class FireStoreHelper {
       for (int j = 0; j < queryDocumentSnapshotGif.length; j++) {
         AppGif appGif =
             AppGif.fromFirebaseJson(queryDocumentSnapshotGif[j].data());
-        appGif.id = queryDocumentSnapshotGif[j].id;
+
         alluserGifs.add(appGif);
       }
     }
     return alluserGifs;
   }
 
-  // queryDocumentSnapshotGif.forEach((element) {
-  //         alluserGifs.add(AppGif.fromFirebaseJson(element.data()));
-  //       });
-  // UserIds.forEach(
-  //   (element) async {
-  //     QuerySnapshot<Map<String, dynamic>> querySnapshotGif =
-  //         await FirebaseFirestore.instance
-  //             .collection('user/$element/gifs')
-  //             .get();
-  //     List<QueryDocumentSnapshot<Map<String, dynamic>>>
-  //         queryDocumentSnapshotGif = querySnapshotGif.docs;
-  //     queryDocumentSnapshotGif.forEach((element) {
-  //       alluserGifs.add(AppGif.fromFirebaseJson(element.data()));
-  //     });
-  //   },
-  // );
+  getFavoriteFromUser(List ids) async {
+    List<AppGif> gifs = [];
 
-  // UserIds.forEach((element) async {
-  //   QuerySnapshot<Map<String, dynamic>> querySnapshotGif =
-  //       await FirebaseFirestore.instance
-  //           .collection('user')
-  //           .doc(element)
-  //           .collection('gifs')
-  //           .get();
-  //   List<QueryDocumentSnapshot<Map<String, dynamic>>>
-  //       queryDocumentSnapshotGif = querySnapshotGif.docs;
-  //   queryDocumentSnapshotGif.forEach((e) {
-  //     alluserGifs.add(AppGif.fromFirebaseJson(e.data()));
-  //   });
-  // });
+    for (int i = 0; i < ids.length; i++) {
+      List<String> temp = ids[i].split('-');
+      String userId = temp.first;
+      String gifId = temp.last;
+      log(userId);
+      log(gifId);
+      DocumentSnapshot<Map<String, dynamic>> documentSnapshot =
+          await FirebaseFirestore.instance
+              .collection('user')
+              .doc(userId)
+              .collection('gifs')
+              .doc(gifId)
+              .get();
 
+      gifs.add(AppGif.fromFirebaseJson(documentSnapshot.data()!));
+    }
+
+    log(gifs.toString());
+    return gifs;
+  }
 }

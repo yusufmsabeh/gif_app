@@ -20,4 +20,11 @@ class AppRouter {
   static showAlertDialog(String message) {
     pushWidget(showAlertDialog(message));
   }
+
+  static showErrorSnackBar(String message) {
+    ScaffoldMessenger.of(navKey.currentContext!).showSnackBar(SnackBar(
+      content: Text(message),
+      backgroundColor: Colors.red,
+    ));
+  }
 }

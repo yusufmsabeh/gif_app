@@ -45,9 +45,11 @@ class DioHelper {
     if (Ids.length == 0) {
       return [];
     }
-    String idsUrl = Ids.toString();
-    idsUrl = idsUrl.substring(1, idsUrl.length - 1);
 
+    String idsUrl = Ids.toString();
+
+    idsUrl = idsUrl.substring(1, idsUrl.length - 1);
+    log(idsUrl);
     Response response = await dio.get(
         'https://api.giphy.com/v1/gifs?api_key=C3K4QIt7Onh1W85eE7jFoeyHCurqOEyz&ids=$idsUrl');
     List data = response.data['data'];
