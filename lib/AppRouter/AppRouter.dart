@@ -27,4 +27,10 @@ class AppRouter {
       backgroundColor: Colors.red,
     ));
   }
+
+  static showSnackBar(String message) =>
+      ScaffoldMessenger.of(navKey.currentContext!).showSnackBar(SnackBar(
+        content: Text(message),
+        backgroundColor: Colors.green,
+      ));
 }

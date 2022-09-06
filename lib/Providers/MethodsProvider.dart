@@ -47,13 +47,15 @@ class MethodProvider {
   }
 
   downloadFile(AppGif appGif) async {
+    AppRouter.showSnackBar("Downloading....");
     await Permission.storage.request();
     final uri = Uri.parse(appGif.originalUrl ?? '');
     final response = await http.get(uri);
     final bytes = response.bodyBytes;
     Directory directory = Directory('/storage/emulated/0/Download');
-    log(directory.path);
+
     final String path = '${directory.path}/${appGif.title}.gif';
     File(path).writeAsBytesSync(bytes);
+    AppRouter.showSnackBar("Downloaded successfully ");
   }
 }

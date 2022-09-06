@@ -57,10 +57,6 @@ class GifScreen extends StatelessWidget {
                         child: Center(child: LoadingSpinner())),
                     errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
-                  // child: Image.network(
-                  //   appGif.originalUrl ?? '',
-                  //   fit: BoxFit.fill,
-                  // )
                 ),
                 SizedBox(
                   height: 20.h,
