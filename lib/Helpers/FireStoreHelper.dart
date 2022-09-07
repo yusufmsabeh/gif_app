@@ -134,8 +134,7 @@ class FireStoreHelper {
       List<String> temp = ids[i].split('-');
       String userId = temp.first;
       String gifId = temp.last;
-      log(userId);
-      log(gifId);
+  
       DocumentSnapshot<Map<String, dynamic>> documentSnapshot =
           await FirebaseFirestore.instance
               .collection('user')
@@ -147,7 +146,8 @@ class FireStoreHelper {
       gifs.add(AppGif.fromFirebaseJson(documentSnapshot.data()!));
     }
 
-    log(gifs.toString());
+
+
     return gifs;
   }
 }

@@ -43,7 +43,7 @@ class FireStoreProvider extends ChangeNotifier {
   }
 
   addOrDeleteFavorites(String id) {
-    log(id);
+
     changeLoadingState();
     if (appUser!.favorites.any((element) => element == id)) {
       appUser!.favorites.remove(id);
