@@ -24,14 +24,10 @@ class HomePage extends StatelessWidget {
           floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
           floatingActionButton: GestureDetector(
             onTap: (() async {
-              await FireStoreprovider.getUserGif();
               AppRouter.pushWidget(const UplaodFile());
             }),
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 100),
-              // margin: context.locale.toString() == 'ar'
-              //     ? EdgeInsets.only(left: 100.w)
-              //     : EdgeInsets.only(right: 102.w),
               height: 35.h,
               padding: EdgeInsets.symmetric(horizontal: 15.w),
               decoration: BoxDecoration(
