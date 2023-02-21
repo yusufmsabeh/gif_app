@@ -27,7 +27,8 @@ class HomePage extends StatelessWidget {
               AppRouter.pushWidget(const UplaodFile());
             }),
             child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 100),
+              width: 130.w,
+              margin: EdgeInsets.symmetric(horizontal: 100.w),
               height: 35.h,
               padding: EdgeInsets.symmetric(horizontal: 15.w),
               decoration: BoxDecoration(
